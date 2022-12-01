@@ -1,0 +1,22 @@
+$color-neutral-black: hsl(0, 0%, 0%);
+$color-neutral-white: hsl(0, 0%, 100%);
+
+$color-dark-background: hsl(0, 0%, 15%);
+$color-dark-accent: hsl(212, 100%, 48%);
+
+$color-light-background: hsl(0, 0%, 85%);
+$color-light-accent-1: hsl(212, 100%, 48%);
+$color-light-accent-2: hsl(0, 0%, 50%);
+
+@function getDimensionValue($baseValue) {
+    @return ($baseValue * 8px);
+}
+
+$size-breakpoint-small: 680px;
+$size-breakpoint-normal: 980px;
+$size-breakpoint-large: 1280px;
+
+$size-border-default: 1px;
+
+$size-font-default: getDimensionValue(1.5);
+$size-font-title: getDimensionValue(4);

@@ -1,0 +1,41 @@
+{
+    "name": "lennard-fickus.de",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@types/node": "18.11.9",
+        "@types/react": "18.0.25",
+        "@types/react-dom": "18.0.9",
+        "eslint": "8.28.0",
+        "eslint-config-next": "13.0.5",
+        "next": "13.0.5",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-icons": "^4.6.0",
+        "sass": "^1.56.1",
+        "temporal-polyfill": "^0.0.7",
+        "typeface-roboto": "1.1.13",
+        "typescript": "4.9.3"
+    },
+    "devDependencies": {
+        "@types/node": "18.0.1",
+        "@types/react": "18.0.14",
+        "@types/react-dom": "18.0.6",
+        "@typescript-eslint/eslint-plugin": "^5.30.5",
+        "@typescript-eslint/parser": "^5.30.5",
+        "eslint": "8.19.0",
+        "eslint-config-next": "12.2.0",
+        "eslint-plugin-no-null": "^1.0.2",
+        "nodemon": "^2.0.19",
+        "prettier": "^2.8.0",
+        "ts-node": "^10.8.2",
+        "typescript": "4.7.4",
+        "webpack": "^5.73.0"
+    }
+}
