@@ -19,6 +19,7 @@
         "react-dom": "18.2.0",
         "react-icons": "^4.6.0",
         "sass": "^1.56.1",
+        "sharp": "^0.31.2",
         "temporal-polyfill": "^0.0.7",
         "typeface-roboto": "1.1.13",
         "typescript": "4.9.3"
