@@ -1,13 +1,6 @@
 @use "./core.module" as core;
 
 .grid {
-    // display: flex;
-    // flex-direction: column;
-    // flex-wrap: nowrap;
-    // align-items: stretch;
-    // justify-content: space-evenly;
-    // gap: core.getDimensionValue(1);
-    // max-width: 100%;
     display: grid;
     gap: core.getDimensionValue(1);
     max-width: 100%;
@@ -24,23 +17,11 @@
         max-width: core.$size-breakpoint-large;
     }
 
-    // .line {
-    //     display: flex;
-    //     flex-direction: row;
-    //     align-items: stretch;
-    //     justify-content: space-evenly;
-    //     gap: core.getDimensionValue(1);
-    //     width: 100%;
-
     .cell {
         object-fit: contain;
         height: auto;
-        max-height: min(100%, 500px);
+        max-height: min(100%, 600px);
         max-width: 100%;
         width: 100%;
-
-        // img {
-        // }
     }
-    // }
 }
