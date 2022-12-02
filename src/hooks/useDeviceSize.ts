@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {
     SIZE_BREAKPOINT_LARGE,
     SIZE_BREAKPOINT_NORMAL,
-    SIZE_BREAKPOINT_SMALL
+    SIZE_BREAKPOINT_SMALL,
 } from "../lib/helpers"
 import Website from "../typings"
 
@@ -25,8 +25,7 @@ const getDeviceSize = (): Website.Base.DeviceSize => {
         }
         return "Small"
     }
-    
-    console.log(`server`)
+
     return "Small"
 }
 
