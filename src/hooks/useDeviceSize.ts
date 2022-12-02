@@ -8,8 +8,6 @@ import Website from "../typings"
 
 const getDeviceSize = (): Website.Base.DeviceSize => {
     if (typeof window !== "undefined") {
-        console.log(`client`)
-        console.log(window.matchMedia(`(min-width: ${SIZE_BREAKPOINT_SMALL})`))
         if (
             window.matchMedia(`(min-width: ${SIZE_BREAKPOINT_LARGE})`).matches
         ) {
@@ -39,7 +37,6 @@ const useDeviceSize = (): Website.Base.DeviceSize => {
         const handler = () => {
             const deviceSize = getDeviceSize()
             setDeviceSize(deviceSize)
-            console.log(`resize ${deviceSize}`)
         }
         window.addEventListener("resize", handler)
         return () => window.removeEventListener("resize", handler)
