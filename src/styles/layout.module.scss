@@ -61,8 +61,15 @@
         }
 
         button.menuSwitch {
+            background: none;
+            border: 0;
             grid-column: 3 / 4;
             grid-row: auto;
+
+            svg {
+                height: core.getDimensionValue(3);
+                width: core.getDimensionValue(3);
+            }
         }
 
         &:has(> .menu.show) {
