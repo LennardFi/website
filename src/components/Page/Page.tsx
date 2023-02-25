@@ -2,10 +2,10 @@ import Head from "next/head"
 import Link from "next/link"
 import React, { useContext } from "react"
 import { TfiInstagram } from "react-icons/tfi"
-import LocalizationContext from "../context/LocalizationContext"
-import styles from "../styles/layout.module.scss"
-import LocalizedLabel from "./LocalizedLabel"
-import Navigation from "./Navigation"
+import LocalizationContext from "../../context/LocalizationContext"
+import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
+import Navigation from "../Navigation/Navigation"
+import styles from "./Page.module.scss"
 
 interface PageProps extends React.HTMLProps<HTMLDivElement> {
     children?: React.ReactNode
@@ -48,6 +48,7 @@ const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
                                 <li>
                                     <Link href="/privacy">
                                         <LocalizedLabel
+                                            component="span"
                                             de="Datenschutzerklärung"
                                             en="Privacy policy"
                                         />
@@ -56,6 +57,7 @@ const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
                                 <li>
                                     <Link href="/inprint">
                                         <LocalizedLabel
+                                            component="span"
                                             de="Impressum"
                                             en="inprint"
                                         />

@@ -1,19 +1,35 @@
+@use "./core.module" as core;
+
 html,
 body {
     padding: 0;
     margin: 0;
     max-height: 100vh;
-    font-family: 'Fira Code', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: "Fira Code", -apple-system, BlinkMacSystemFont, Segoe UI,
+        Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+        sans-serif;
 }
 
 a {
-    color: inherit;
+    color: core.$color-light-accent-1;
     text-decoration: none;
+
+    &:hover {
+        color: core.$color-light-accent-2;
+    }
 }
 
 * {
     box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {

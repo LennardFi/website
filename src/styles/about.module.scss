@@ -1,0 +1,11 @@
+@use "./core.module" as core;
+
+.container {
+    max-width: core.$size-breakpoint-small;
+
+    .profilePicture {
+        float: left;
+        margin: core.getDimensionValue(2) core.getDimensionValue(2)
+            core.getDimensionValue(2) 0;
+    }
+}

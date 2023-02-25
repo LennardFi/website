@@ -1,4 +1,4 @@
-@use "./core.module" as core;
+@use "../../../styles/core.module" as core;
 
 .grid {
     display: grid;
@@ -15,13 +15,5 @@
 
     @media only screen and (min-width: core.$size-breakpoint-large) {
         max-width: core.$size-breakpoint-large;
-    }
-
-    .cell {
-        object-fit: contain;
-        height: auto;
-        max-height: min(100%, 600px);
-        max-width: 100%;
-        width: 100%;
     }
 }

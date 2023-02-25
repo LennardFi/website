@@ -1,4 +1,4 @@
-import Page from "../components/Page"
+import Page from "../components/Page/Page"
 import styles from "../styles/privacy.module.scss"
 
 export default function Home() {

@@ -1,0 +1,19 @@
+@use "../../styles/core.module.scss" as core;
+
+.label {
+    .entry {
+        display: none;
+    }
+
+    &.DE {
+        .entry.DE {
+            display: initial;
+        }
+    }
+
+    &.EN {
+        .entry.EN {
+            display: initial;
+        }
+    }
+}

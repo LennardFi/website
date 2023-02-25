@@ -1,38 +1,45 @@
 import Image, { StaticImageData } from "next/image"
-import { useContext } from "react"
-import LocalizationContext from "../../context/LocalizationContext"
-import styles from "../../styles/content-grid.module.scss"
+import { CSSProperties, useContext } from "react"
+import LocalizationContext from "../../../context/LocalizationContext"
+import styles from "./ContentGridCell.module.scss"
 
-interface ContentGridCellPropsBase {}
+interface ContentGridCellPropsBase {
+    className?: string
+    style?: CSSProperties
+}
 
-interface EmptyContentGridCellProps extends ContentGridCellPropsBase {
+export interface EmptyContentGridCellProps extends ContentGridCellPropsBase {
     empty: true
 }
 
-interface ImageContentGridCellProps extends ContentGridCellPropsBase {
+export interface ImageContentGridCellProps extends ContentGridCellPropsBase {
     image: StaticImageData
     label?: [DE: string, EN: string]
 }
 
-interface TextContentGridCellProps extends ContentGridCellPropsBase {
+export interface TextContentGridCellProps extends ContentGridCellPropsBase {
     de: string
     en: string
 }
 
-type ContentGridCellProps =
+export interface ChildrenContentGridCellProps extends ContentGridCellPropsBase {
+    children: React.ReactNode
+}
+
+export type ContentGridCellProps =
     | EmptyContentGridCellProps
     | ImageContentGridCellProps
     | TextContentGridCellProps
+    | ChildrenContentGridCellProps
 
 const ContentGridCell = (props: ContentGridCellProps) => {
     const localizationContext = useContext(LocalizationContext)
 
     if ("image" in props) {
         return (
-            // <div
-            // >
             <Image
-                className={styles.cell}
+                className={`${styles.cell} ${props.className ?? ""}`}
+                style={props.style}
                 src={props.image}
                 height={500}
                 alt={
@@ -43,12 +50,15 @@ const ContentGridCell = (props: ContentGridCellProps) => {
                         : ""
                 }
             />
-            // </div>
         )
     }
 
     if ("empty" in props) {
         return <div className={styles.cell}></div>
+    }
+
+    if ("children" in props) {
+        return <div className={styles.cell}>{props.children}</div>
     }
 
     return (
@@ -61,5 +71,4 @@ const ContentGridCell = (props: ContentGridCellProps) => {
         </div>
     )
 }
-
 export default ContentGridCell

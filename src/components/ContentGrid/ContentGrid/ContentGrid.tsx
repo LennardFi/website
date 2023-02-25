@@ -1,11 +1,13 @@
-import useDeviceSize from "../../hooks/useDeviceSize"
-import { getDimensionValue } from "../../lib/helpers"
-import styles from "../../styles/content-grid.module.scss"
+import { Fragment } from "react"
+import useDeviceSize from "../../../hooks/useDeviceSize"
+import { getDimensionValue } from "../../../lib/helpers"
+import styles from "./ContentGrid.module.scss"
 
-interface ContentGridProps extends React.HTMLProps<HTMLDivElement> {
+export interface ContentGridProps extends React.HTMLProps<HTMLDivElement> {
     children: React.ReactNode
     columns: number | [number, number, number, number]
     gap?: number
+    name?: string // FIXME: Only for debugging. Remove before commit
 }
 
 const ContentGrid = ({
@@ -13,6 +15,7 @@ const ContentGrid = ({
     className,
     columns,
     gap,
+    name,
     style,
     ...rest
 }: ContentGridProps) => {
@@ -34,6 +37,14 @@ const ContentGrid = ({
             ? columns[2]
             : columns[3]
 
+    console.log({
+        name,
+        numberOfColumns,
+        "childrenAsArray.length": childrenAsArray.length,
+        rows: childrenAsArray.length / numberOfColumns,
+        columns: numberOfColumns,
+    })
+
     return (
         <div
             className={`${styles.grid} ${className ?? ""}`}
@@ -48,9 +59,7 @@ const ContentGrid = ({
             {...rest}
         >
             {childrenAsArray.map((child, i) => (
-                <div className={styles.cell} key={i}>
-                    {child}
-                </div>
+                <Fragment key={i}>{child}</Fragment>
             ))}
         </div>
     )

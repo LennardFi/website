@@ -1,8 +1,8 @@
 import React from "react"
-import styles from "../../styles/content-grid.module.scss"
-import Website from "../../typings"
+import Website from "../../../typings"
+import styles from "./ContentGridLine.module.scss"
 
-interface ContentGridLineProps {
+export interface ContentGridLineProps {
     anchor: Website.ContentGrid.ContentGridCellAnchor
     children: React.ReactNode
     title?: string

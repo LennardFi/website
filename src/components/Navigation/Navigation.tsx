@@ -3,12 +3,12 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { TfiClose, TfiMenu } from "react-icons/tfi"
-import LocalizationContext from "../context/LocalizationContext"
-import Logo from "../public/vercel.svg"
-import styles from "../styles/layout.module.scss"
-import LocalizedLabel from "./LocalizedLabel"
+import LocalizationContext from "../../context/LocalizationContext"
+import Logo from "../../public/vercel.svg"
+import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
+import styles from "./Navigation.module.scss"
 
-interface NavigationProps {}
+export interface NavigationProps {}
 
 const Navigation = (props: NavigationProps) => {
     const localizationContext = useContext(LocalizationContext)
@@ -16,7 +16,7 @@ const Navigation = (props: NavigationProps) => {
     const [showMenu, setShowMenu] = useState(false)
 
     return (
-        <nav>
+        <nav className={styles.nav}>
             <Link href="/">
                 <Image
                     alt="Vercel Logo"
@@ -36,7 +36,11 @@ const Navigation = (props: NavigationProps) => {
             <ul className={`${styles.menu} ${showMenu ? styles.show : ""}`}>
                 <li className={router.asPath === "/" ? styles.currentPage : ""}>
                     <Link href="/">
-                        <LocalizedLabel de="Startseite" en="Homepage" />
+                        <LocalizedLabel
+                            component="span"
+                            de="Startseite"
+                            en="Homepage"
+                        />
                     </Link>
                 </li>
                 <li
@@ -45,7 +49,11 @@ const Navigation = (props: NavigationProps) => {
                     }
                 >
                     <Link href="/portfolio">
-                        <LocalizedLabel de="Portfolio" en="Portfolio" />
+                        <LocalizedLabel
+                            component="span"
+                            de="Portfolio"
+                            en="Portfolio"
+                        />
                     </Link>
                 </li>
                 <li
@@ -54,7 +62,11 @@ const Navigation = (props: NavigationProps) => {
                     }
                 >
                     <Link href="/contact">
-                        <LocalizedLabel de="Kontakt" en="Contact" />
+                        <LocalizedLabel
+                            component="span"
+                            de="Kontakt"
+                            en="Contact"
+                        />
                     </Link>
                 </li>
                 <li
@@ -63,7 +75,11 @@ const Navigation = (props: NavigationProps) => {
                     }
                 >
                     <Link href="/about">
-                        <LocalizedLabel de="Über mich" en="About me" />
+                        <LocalizedLabel
+                            component="span"
+                            de="Über mich"
+                            en="About me"
+                        />
                     </Link>
                 </li>
                 <li>

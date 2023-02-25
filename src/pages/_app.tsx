@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const [language, setLanguage] = useState<Website.Base.Localization>("DE")
 
     return (
+        // <StrictMode>
         <LocalizationContext.Provider
             value={{
                 currentLanguage: language,
@@ -16,5 +17,6 @@ export default function App({ Component, pageProps }: AppProps) {
         >
             <Component {...pageProps} />
         </LocalizationContext.Provider>
+        // </StrictMode>
     )
 }

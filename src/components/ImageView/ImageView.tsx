@@ -1,8 +1,8 @@
 import Image, { StaticImageData } from "next/image"
 import { useContext } from "react"
-import LocalizationContext from "../context/LocalizationContext"
+import LocalizationContext from "../../context/LocalizationContext"
 
-interface ImageViewProps {
+export interface ImageViewProps {
     /**
      * Label in German
      */

@@ -1,0 +1,9 @@
+@use "../../../styles/core.module" as core;
+
+.cell {
+    object-fit: contain;
+    height: auto;
+    max-height: min(100%, 600px);
+    max-width: 100%;
+    width: auto;
+}
