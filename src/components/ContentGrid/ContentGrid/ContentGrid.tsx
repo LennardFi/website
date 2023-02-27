@@ -7,7 +7,6 @@ export interface ContentGridProps extends React.HTMLProps<HTMLDivElement> {
     children: React.ReactNode
     columns: number | [number, number, number, number]
     gap?: number
-    name?: string // FIXME: Only for debugging. Remove before commit
 }
 
 const ContentGrid = ({
@@ -29,21 +28,13 @@ const ContentGrid = ({
     const numberOfColumns =
         typeof columns === "number"
             ? columns
-            : deviceSize === "Small"
+            : deviceSize === "small"
             ? columns[0]
-            : deviceSize === "Normal"
+            : deviceSize === "normal"
             ? columns[1]
-            : deviceSize === "Large"
+            : deviceSize === "large"
             ? columns[2]
             : columns[3]
-
-    console.log({
-        name,
-        numberOfColumns,
-        "childrenAsArray.length": childrenAsArray.length,
-        rows: childrenAsArray.length / numberOfColumns,
-        columns: numberOfColumns,
-    })
 
     return (
         <div

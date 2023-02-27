@@ -1,11 +1,15 @@
 import type { AppProps } from "next/app"
 import { useState } from "react"
-import LocalizationContext from "../context/LocalizationContext"
+import ImageViewer from "../components/ImageViewer/ImageViewer/ImageViewer"
+import ImageViewContext from "../context/ImageViewContext/ImageViewContext"
+import LocalizationContext from "../context/LocalizationContext/LocalizationContext"
 import "../styles/globals.scss"
-import Website from "../typings"
+import Website, { Maybe } from "../typings"
 
 export default function App({ Component, pageProps }: AppProps) {
     const [language, setLanguage] = useState<Website.Base.Localization>("DE")
+    const [currentImagePreview, setCurrentImagePreview] =
+        useState<Maybe<Website.ImageViewer.ImageDetails>>(undefined)
 
     return (
         // <StrictMode>
@@ -15,7 +19,26 @@ export default function App({ Component, pageProps }: AppProps) {
                 setLanguage: setLanguage,
             }}
         >
-            <Component {...pageProps} />
+            <ImageViewContext.Provider
+                value={{
+                    viewImage(image) {
+                        setCurrentImagePreview(image)
+                    },
+                }}
+            >
+                <Component {...pageProps} />
+                {currentImagePreview !== undefined ? (
+                    <ImageViewer
+                        close={() => setCurrentImagePreview(undefined)}
+                        label={
+                            language === "DE"
+                                ? currentImagePreview.label.DE
+                                : currentImagePreview.label.EN
+                        }
+                        src={currentImagePreview.src}
+                    />
+                ) : null}
+            </ImageViewContext.Provider>
         </LocalizationContext.Provider>
         // </StrictMode>
     )

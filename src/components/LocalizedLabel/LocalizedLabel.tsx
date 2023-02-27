@@ -1,71 +1,75 @@
-import React, { ReactHTML, useContext } from "react"
-import LocalizationContext from "../../context/LocalizationContext"
-import styles from "./LocalizedLabel.module.scss"
+import React, { FC, useContext } from "react"
+import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
+import Website from "../../typings"
 
 export interface LocalizedLabelEntryProps {
     children?: React.ReactNode
 }
 
-export interface LocalizedLabelPropsBase {
-    component?: keyof ReactHTML
+export interface LocalizedLabelPropsBase {}
+
+export interface LongLocalizedLabelProps extends LocalizedLabelPropsBase {
+    children: [DE: React.ReactNode, EN: React.ReactNode]
 }
 
-export interface ComplexLocalizedLabelProps extends LocalizedLabelPropsBase {
-    children: React.ReactNode
-    component?: keyof ReactHTML
-}
-
-export interface SimpleLocalizedLabelProps extends LocalizedLabelPropsBase {
-    component?: keyof ReactHTML
+export interface ShortLocalizedLabelProps extends LocalizedLabelPropsBase {
     de: string
     en: string
+    component?: keyof React.ReactHTML
 }
 
 export type LocalizedLabelProps =
-    | ComplexLocalizedLabelProps
-    | SimpleLocalizedLabelProps
+    | LongLocalizedLabelProps
+    | ShortLocalizedLabelProps
 
-/**
- * Localized label for german content
- */
-export const DE = ({ children }: LocalizedLabelEntryProps) => {
-    return <span className={`${styles.entry} ${styles.DE}`}>{children}</span>
+export const LocalizedLabelEntry = (lang: Website.Base.Localization) => {
+    const innerComponent: FC<LocalizedLabelEntryProps> = ({
+        children,
+    }: LocalizedLabelEntryProps) => {
+        return <>{children}</>
+    }
+
+    innerComponent.displayName = `${lang}_LocalizedLabelEntry`
+    return innerComponent
 }
 
-/**
- * Localized label for english content
- */
-export const EN = ({ children }: LocalizedLabelEntryProps) => {
-    return <span className={`${styles.entry} ${styles.EN}`}>{children}</span>
-}
+export const DE = LocalizedLabelEntry("DE")
+export const EN = LocalizedLabelEntry("EN")
 
 const LocalizedLabel = (props: LocalizedLabelProps) => {
     const { currentLanguage } = useContext(LocalizationContext)
 
     if ("children" in props) {
-        return React.createElement(
-            props.component ?? "div",
-            {
-                className: `${styles.label} ${
-                    currentLanguage === "DE" ? styles.DE : styles.EN
-                }`,
-            },
-            props.children
+        return (
+            <>
+                {props.children.filter((child) => {
+                    if (
+                        typeof child === "object" &&
+                        child !== null &&
+                        "type" in child
+                    ) {
+                        switch (currentLanguage) {
+                            case "DE":
+                                return child.type === DE
+                            case "EN":
+                                return child.type === EN
+                        }
+                    }
+                    return false
+                })}
+            </>
         )
     }
 
-    return React.createElement(
-        props.component ?? "div",
-        {
-            className: `${styles.label} ${
-                currentLanguage === "DE" ? styles.DE : styles.EN
-            }`,
-        },
-        <>
-            <DE>{props.de}</DE>
-            <EN>{props.en}</EN>
-        </>
-    )
+    if (props.component !== undefined) {
+        return React.createElement(
+            props.component,
+            undefined,
+            currentLanguage === "DE" ? props.de : props.en
+        )
+    }
+
+    return <>{currentLanguage === "DE" ? props.de : props.en}</>
 }
 
 export default LocalizedLabel

@@ -1,8 +1,8 @@
 import Head from "next/head"
 import Link from "next/link"
 import React, { useContext } from "react"
-import { TfiInstagram } from "react-icons/tfi"
-import LocalizationContext from "../../context/LocalizationContext"
+import { FaInstagram, FaTiktok } from "react-icons/fa"
+import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
 import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
 import Navigation from "../Navigation/Navigation"
 import styles from "./Page.module.scss"
@@ -48,7 +48,6 @@ const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
                                 <li>
                                     <Link href="/privacy">
                                         <LocalizedLabel
-                                            component="span"
                                             de="Datenschutzerklärung"
                                             en="Privacy policy"
                                         />
@@ -57,7 +56,6 @@ const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
                                 <li>
                                     <Link href="/inprint">
                                         <LocalizedLabel
-                                            component="span"
                                             de="Impressum"
                                             en="inprint"
                                         />
@@ -68,7 +66,12 @@ const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
                             <ul className={styles.socialMedia}>
                                 <li>
                                     <Link href="https://www.instagram.com/lennardfi/">
-                                        <TfiInstagram />
+                                        <FaInstagram />
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="https://www.tiktok.com/@lennardfi">
+                                        <FaTiktok />
                                     </Link>
                                 </li>
                             </ul>

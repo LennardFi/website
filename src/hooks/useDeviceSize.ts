@@ -11,32 +11,34 @@ const getDeviceSize = (): Website.Base.DeviceSize => {
         if (
             window.matchMedia(`(min-width: ${SIZE_BREAKPOINT_LARGE})`).matches
         ) {
-            return "X-Large"
+            return "x-large"
         }
         if (
             window.matchMedia(`(min-width: ${SIZE_BREAKPOINT_NORMAL})`).matches
         ) {
-            return "Large"
+            return "large"
         }
         if (
             window.matchMedia(`(min-width: ${SIZE_BREAKPOINT_SMALL})`).matches
         ) {
-            return "Normal"
+            return "normal"
         }
-        return "Small"
+        return "small"
     }
 
-    return "Small"
+    return "small"
 }
 
 const useDeviceSize = (): Website.Base.DeviceSize => {
-    const [deviceSize, setDeviceSize] = useState(getDeviceSize())
+    const [deviceSize, setDeviceSize] =
+        useState<Website.Base.DeviceSize>("small")
 
     useEffect(() => {
         const handler = () => {
             const deviceSize = getDeviceSize()
             setDeviceSize(deviceSize)
         }
+        handler()
         window.addEventListener("resize", handler)
         return () => window.removeEventListener("resize", handler)
     }, [])

@@ -1,6 +1,7 @@
-import Image, { StaticImageData } from "next/image"
+import { StaticImageData } from "next/image"
 import { CSSProperties, useContext } from "react"
-import LocalizationContext from "../../../context/LocalizationContext"
+import LocalizationContext from "../../../context/LocalizationContext/LocalizationContext"
+import ImagePreview from "../../ImagePreview/ImagePreview"
 import styles from "./ContentGridCell.module.scss"
 
 interface ContentGridCellPropsBase {
@@ -37,18 +38,13 @@ const ContentGridCell = (props: ContentGridCellProps) => {
 
     if ("image" in props) {
         return (
-            <Image
+            <ImagePreview
                 className={`${styles.cell} ${props.className ?? ""}`}
                 style={props.style}
                 src={props.image}
                 height={500}
-                alt={
-                    props.label !== undefined
-                        ? localizationContext.currentLanguage === "DE"
-                            ? props.label[0] ?? ""
-                            : props.label[1] ?? ""
-                        : ""
-                }
+                de={props.label?.[0] ?? ""}
+                en={props.label?.[1] ?? ""}
             />
         )
     }

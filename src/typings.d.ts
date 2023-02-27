@@ -2,7 +2,7 @@ declare namespace Website {
     namespace Base {
         type Localization = "DE" | "EN"
 
-        type DeviceSize = "Small" | "Normal" | "Large" | "X-Large"
+        type DeviceSize = "small" | "normal" | "large" | "x-large"
     }
 
     namespace ContentGrid {
@@ -32,11 +32,14 @@ declare namespace Website {
         type ContentGridCellAnchor = "horizontal" | "vertical"
     }
 
-    namespace Portfolio {
-        type Genre = "street-photography" | "portrait"
+    namespace ImageViewer {
+        interface ImageDetails {
+            label: Record<Base.Localization, string>
+            src: ImageProps["src"]
+        }
     }
 }
 
-type Maybe<T> = T | undefined
+export type Maybe<T> = T | undefined
 
 export default Website

@@ -10,52 +10,74 @@ import styles from "../styles/about.module.scss"
 
 const Portfolio = () => {
     return (
-        <Page
-            // className={styles.portfolioPage}
-            pageTitle={["Über mich", "About"]}
-            showNav
-        >
+        <Page pageTitle={["Über mich", "About me"]} showNav>
             <div className={styles.container}>
-                <LocalizedLabel component="p">
-                    <DE>
-                        <h3>Hallo 👋</h3>
-                        <p>
-                            Schön, dass du meine Website besuchst. Ich bin
-                            Lennard Fickus. 24 Jahre alt, Programmierer und
-                            Hobbyfotograf.
-                        </p>
-                    </DE>
-                    <EN>
-                        <h3>Hello 👋</h3>
-                    </EN>
-                    <Image
-                        alt="Profile picture"
-                        className={styles.profilePicture}
-                        src={Me.src}
-                        height={400}
-                        width={400}
-                    />
-                    <DE>
-                        <p>
-                            Hauptsächlich konzentriere ich mich auf die
-                            Portrait- und People-Fotografie weil ich gerne
-                            festhalte, wie jeder Mensch einzigartig und
-                            wunderbar von Gott geschaffen wurde.
-                        </p>
-                        <p>
-                            {" "}
-                            Wenn dich meine Werke interessieren: Du kannst eine
-                            Auswahl davon in meinem{" "}
-                            <Link href="/portfolio">Portfolio</Link> anschauen.
-                            Außerdem poste ich viele meiner Werke auf{" "}
-                            <Link href="https://www.instagram.com/lennardfi/">
-                                Instagram
-                            </Link>
-                            .
-                        </p>
-                    </DE>
-                    <EN></EN>
-                </LocalizedLabel>
+                <h3 className={styles.header}>
+                    <LocalizedLabel de="Hallo 👋" en="Hello 👋" />
+                </h3>
+                <Image
+                    alt="Profile picture"
+                    className={styles.profilePicture}
+                    src={Me.src}
+                    height={400}
+                    width={400}
+                />
+                <div className={styles.maincontent}>
+                    <p>
+                        <LocalizedLabel>
+                            <DE>
+                                Ich bin Lennard Fickus. 24 Jahre alt,
+                                Programmierer und Hobbyfotograf.
+                            </DE>
+                            <EN>
+                                24 years old, developer and hobby photographer
+                                from Germany.
+                            </EN>
+                        </LocalizedLabel>
+                    </p>
+                    <p>
+                        <LocalizedLabel>
+                            <DE>
+                                Hauptsächlich konzentriere ich mich auf die
+                                Portrait- und People-Fotografie. Jeder Mensch
+                                ist einzigartig und wunderbar von unserem Gott
+                                geschaffen worden und das versuche ich in meinen
+                                Bildern festzuhalten.
+                            </DE>
+                            <EN>{""}</EN>
+                        </LocalizedLabel>
+                    </p>
+                    <p>
+                        <LocalizedLabel>
+                            <DE>
+                                Wenn dich meine Werke interessieren: Du kannst
+                                eine Auswahl davon in meinem{" "}
+                            </DE>
+                            <EN>{""}</EN>
+                        </LocalizedLabel>
+                        <Link href="/portfolio">
+                            <LocalizedLabel de="Portfolio" en="Portfolio" />
+                        </Link>
+                        <LocalizedLabel>
+                            <DE>
+                                {" "}
+                                anschauen. Außerdem poste ich viele meiner Werke
+                                auf{" "}
+                            </DE>
+                            <EN>{""}</EN>
+                        </LocalizedLabel>
+                        <a
+                            href="https://www.instagram.com/lennardfi/"
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            <LocalizedLabel de="Instagram" en="Instagram" />
+                        </a>
+                        {/* <Link href="https://www.instagram.com/lennardfi/">
+                        </Link> */}
+                        <LocalizedLabel de="." en="." />
+                    </p>
+                </div>
             </div>
         </Page>
     )
