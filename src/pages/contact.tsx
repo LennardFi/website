@@ -1,94 +1,165 @@
-import Image from "next/image"
-import Link from "next/link"
-import Me from "../../content/about/DSCF7863-Rectangle.jpg"
+import { FormEventHandler, useContext, useEffect, useId, useState } from "react"
 import LocalizedLabel, {
     DE,
     EN,
 } from "../components/LocalizedLabel/LocalizedLabel"
 import Page from "../components/Page/Page"
+import LocalizationContext from "../context/LocalizationContext/LocalizationContext"
+import useIsMounted from "../hooks/useIsMounted"
 import styles from "../styles/contact.module.scss"
+import Website, { Maybe } from "../typings"
 
 const Contact = () => {
+    const isMountedRef = useIsMounted()
+    const localizationContext = useContext(LocalizationContext)
+    const [requestSent, setRequestSent] = useState(false)
+    const [response, setResponse] = useState<Maybe<boolean>>(undefined)
+    const [description, setDescription] = useState("")
+    const [name, setName] = useState("")
+    const [mail, setMail] = useState("")
+    const [phone, setPhone] = useState("")
+    const nameId = useId()
+    const phoneId = useId()
+    const mailId = useId()
+
+    const submit: FormEventHandler<HTMLFormElement> = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setRequestSent(true)
+    }
+
+    const resetSendButton = () => {
+        setRequestSent(false)
+        setResponse(undefined)
+    }
+
+    useEffect(() => {
+        if (requestSent) {
+            fetch("/api/contact", {
+                headers: new Headers({
+                    contentType: "application/json",
+                }),
+                method: "POST",
+                body: JSON.stringify({
+                    description,
+                    mail,
+                    name,
+                    phone,
+                } as Website.Api.ContactRequestBody),
+            })
+                .then((res) => {
+                    if (isMountedRef.current) {
+                        setRequestSent(false)
+                        setResponse(res.status === 200 ? true : false)
+                    }
+                })
+                .catch(() => {
+                    if (isMountedRef.current) {
+                        setRequestSent(false)
+                        setResponse(false)
+                    }
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        if (isMountedRef.current) {
+                            resetSendButton()
+                        }
+                    }, 2000)
+                })
+        }
+    }, [requestSent])
+
     return (
         <Page pageTitle={["Kontakt", "Contact"]} showNav>
-            <p>
-                <LocalizedLabel>
-                    <DE>
-                        Du möchtest ein Shooting mit mir vereinbaren? Dann bist
-                        du hier genau richtig. Ich biete Shootings in den
-                        Bereichen People-Fotografie (Portraits,
-                        Pärchen-Shooting, Business-Portrait),
-                    </DE>
-                    <EN>You want to arrange a shooting with me?</EN>
-                </LocalizedLabel>
-            </p>
-            <form></form>
-            <div>
-                <h3>
-                    <LocalizedLabel de="Hallo 👋" en="Hello 👋" />
-                </h3>
-                <p>
-                    <Image
-                        alt="Profile picture"
-                        className={styles.profilePicture}
-                        src={Me.src}
-                        height={400}
-                        width={400}
-                    />
+            <form className={styles.form} onSubmit={submit}>
+                <p className={styles.info}>
                     <LocalizedLabel>
                         <DE>
-                            Schön, dass du meine Website besuchst. Ich bin
-                            Lennard Fickus. 24 Jahre alt, Programmierer und
-                            Hobbyfotograf.
+                            Du möchtest ein Shooting mit mir vereinbaren? Dann
+                            bist du hier genau richtig. Schreibe mir in einer
+                            Nachricht, was du dir vorstellst und ich melde mich
+                            schnellst möglichst bei dir.
                         </DE>
                         <EN>
-                            Thank u for your visit. I&apos;m Lennard Fickus. 24
-                            years old, developer and hobby photographer from
-                            Germany.
+                            You want to arrange a shooting with me? Then you are
+                            at the right place. Write me in a message what you
+                            have in mind and I&apos;ll get back to you as soon
+                            as possible.
                         </EN>
                     </LocalizedLabel>
                 </p>
-                <p>
-                    <LocalizedLabel>
-                        <DE>
-                            Hauptsächlich konzentriere ich mich auf die
-                            Portrait- und People-Fotografie weil ich gerne
-                            festhalte, wie jeder Mensch einzigartig und
-                            wunderbar von Gott geschaffen wurde.
-                        </DE>
-                        <EN>{""}</EN>
-                    </LocalizedLabel>
-                </p>
-                <p>
-                    <LocalizedLabel>
-                        <DE>
-                            Wenn dich meine Werke interessieren: Du kannst eine
-                            Auswahl davon in meinem{" "}
-                        </DE>
-                        <EN>{""}</EN>
-                    </LocalizedLabel>
-                    <Link href="/portfolio">
-                        <LocalizedLabel de="Portfolio" en="Portfolio" />
-                    </Link>
-                    <LocalizedLabel>
-                        <DE>
-                            {" "}
-                            anschauen. Außerdem poste ich viele meiner Werke auf{" "}
-                        </DE>
-                        <EN>{""}</EN>
-                    </LocalizedLabel>
-                    <a
-                        href="https://www.instagram.com/lennardfi/"
-                        rel="noreferrer"
-                        target="_blank"
+                <label className={styles.nameLabel} htmlFor={nameId}>
+                    {localizationContext.currentLanguage === "DE"
+                        ? "Name"
+                        : "Name"}
+                    :
+                </label>
+                <input
+                    className={styles.nameInput}
+                    id={nameId}
+                    onChange={(e) => setName(e.target.value)}
+                    type="text"
+                    value={name}
+                />
+                <label className={styles.mailLabel} htmlFor={mailId}>
+                    {localizationContext.currentLanguage === "DE"
+                        ? "E-Mail"
+                        : "Mail"}
+                    :
+                </label>
+                <input
+                    className={styles.mailInput}
+                    id={mailId}
+                    onChange={(e) => setMail(e.target.value)}
+                    type="email"
+                    value={mail}
+                />
+                <label className={styles.phoneLabel} htmlFor={phoneId}>
+                    {localizationContext.currentLanguage === "DE"
+                        ? "Telefon"
+                        : "Phone"}
+                    :
+                </label>
+                <input
+                    className={styles.phoneInput}
+                    id={phoneId}
+                    onChange={(e) => setPhone(e.target.value)}
+                    type="tel"
+                    value={phone}
+                />
+                <textarea
+                    className={styles.descriptionInput}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder={
+                        localizationContext.currentLanguage === "DE"
+                            ? "Schreibe mir, was du dir vorstellst..."
+                            : "Let me know what you have in mind..."
+                    }
+                    rows={10}
+                    value={description}
+                />
+                {response === undefined ? (
+                    <button
+                        className={styles.send}
+                        disabled={requestSent}
+                        type="submit"
                     >
-                        <LocalizedLabel de="Instagram" en="Instagram" />
-                    </a>
-                    {/* <Link href="https://www.instagram.com/lennardfi/">
-                        </Link> */}
-                    <LocalizedLabel de="." en="." />
-                </p>
-            </div>
+                        Senden
+                    </button>
+                ) : response ? (
+                    <p className={`${styles.responseMsg} ${styles.success}`}>
+                        {localizationContext.currentLanguage === "DE"
+                            ? "Anfrage versendet"
+                            : "Request sent"}
+                    </p>
+                ) : (
+                    <p className={`${styles.responseMsg} ${styles.error}`}>
+                        {localizationContext.currentLanguage === "DE"
+                            ? "Fehler beim Versenden der Anfrage"
+                            : "Error while sending request"}
+                    </p>
+                )}
+            </form>
         </Page>
     )
 }

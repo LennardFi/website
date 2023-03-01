@@ -1,4 +1,13 @@
 declare namespace Website {
+    namespace Api {
+        interface ContactRequestBody {
+            name: string
+            mail: string
+            phone: string
+            description: string
+        }
+    }
+
     namespace Base {
         type Localization = "DE" | "EN"
 
