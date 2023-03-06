@@ -3,6 +3,7 @@ import { useContext } from "react"
 import ImageViewContext from "../../context/ImageViewContext/ImageViewContext"
 import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
 import Website from "../../typings"
+import styles from "./ImagePreview.module.scss"
 
 export interface ImagePreviewProps extends Omit<ImageProps, "alt"> {
     /**
@@ -20,8 +21,9 @@ export interface ImagePreviewProps extends Omit<ImageProps, "alt"> {
 }
 
 const ImagePreview = ({
-    en,
+    className,
     de,
+    en,
     imageList,
     src,
     ...rest
@@ -32,6 +34,7 @@ const ImagePreview = ({
     return (
         <Image
             alt={localizationContext.currentLanguage === "DE" ? de : en}
+            className={`${styles.imagePreview} ${className ?? ""}`}
             height={500}
             onClick={() =>
                 imageViewContext.viewImage({

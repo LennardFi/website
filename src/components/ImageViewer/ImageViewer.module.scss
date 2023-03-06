@@ -1,0 +1,76 @@
+@use "../../styles/core.module.scss" as core;
+
+.ImageViewer {
+    background-color: core.$color-light-background;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    padding: core.getDimensionValue(1);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    .toolbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: core.getDimensionValue(1);
+
+        .close {
+            display: flex;
+            justify-content: center;
+            height: core.getDimensionValue(4);
+            width: core.getDimensionValue(4);
+            padding: 0px;
+            border: 0px;
+            background-color: transparent;
+            cursor: pointer;
+
+            svg {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: core.getDimensionValue(2);
+        padding: core.getDimensionValue(2) core.getDimensionValue(1);
+        overflow: hidden;
+        height: 100%;
+        width: auto;
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            .image {
+                max-height: 100%;
+                max-width: 100%;
+                height: auto;
+                width: auto;
+                overflow: hidden;
+            }
+        }
+
+        .description {
+            font-size: core.getDimensionValue(2.25);
+            max-width: core.$size-breakpoint-small;
+            text-align: center;
+            margin: 0px;
+        }
+    }
+}

@@ -3,8 +3,8 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { TfiClose, TfiMenu } from "react-icons/tfi"
+import ProfilePicture from "../../../content/about/DSCF7863-Rectangle.jpg"
 import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
-import Logo from "../../public/vercel.svg"
 import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
 import styles from "./Navigation.module.scss"
 
@@ -19,10 +19,10 @@ const Navigation = (props: NavigationProps) => {
         <nav className={styles.nav}>
             <Link href="/">
                 <Image
-                    alt="Vercel Logo"
+                    alt="Profile Picture"
                     className={styles.logo}
-                    height={32}
-                    src={Logo}
+                    height={128}
+                    src={ProfilePicture}
                 />
             </Link>
 
@@ -36,15 +36,6 @@ const Navigation = (props: NavigationProps) => {
             <ul className={`${styles.menu} ${showMenu ? styles.show : ""}`}>
                 <li className={router.asPath === "/" ? styles.currentPage : ""}>
                     <Link href="/">
-                        <LocalizedLabel de="Startseite" en="Homepage" />
-                    </Link>
-                </li>
-                <li
-                    className={
-                        router.asPath === "/portfolio" ? styles.currentPage : ""
-                    }
-                >
-                    <Link href="/portfolio">
                         <LocalizedLabel de="Portfolio" en="Portfolio" />
                     </Link>
                 </li>
@@ -68,6 +59,7 @@ const Navigation = (props: NavigationProps) => {
                 </li>
                 <li>
                     <button
+                        className={styles.languageSwitch}
                         onClick={() =>
                             localizationContext.setLanguage(
                                 localizationContext.currentLanguage === "DE"

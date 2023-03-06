@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 import Me from "../../content/about/DSCF7863-Rectangle.jpg"
 import LocalizedLabel, {
     DE,
@@ -12,24 +11,27 @@ const Portfolio = () => {
     return (
         <Page pageTitle={["Über mich", "About me"]} showNav>
             <div className={styles.container}>
-                <h3 className={styles.header}>
-                    <LocalizedLabel de="Hallo 👋" en="Hello 👋" />
-                </h3>
                 <Image
                     alt="Profile picture"
                     className={styles.profilePicture}
-                    src={Me.src}
+                    src={Me}
                     height={400}
                     width={400}
                 />
                 <div className={styles.maincontent}>
+                    <h3 className={styles.header}>
+                        <LocalizedLabel de="👋 Hallo" en="👋 Hello" />
+                    </h3>
                     <p>
                         <LocalizedLabel>
                             <DE>
-                                Ich bin Lennard Fickus. 24 Jahre alt,
-                                Programmierer und Hobbyfotograf.
+                                Ich bin Lennard Fickus.
+                                <br />
+                                24 Jahre alt, Programmierer und Hobbyfotograf.
                             </DE>
                             <EN>
+                                I&apos;m Lennard Fickus
+                                <br />
                                 24 years old, developer and hobby photographer
                                 from Germany.
                             </EN>
@@ -44,27 +46,24 @@ const Portfolio = () => {
                                 geschaffen worden und das versuche ich in meinen
                                 Bildern festzuhalten.
                             </DE>
-                            <EN>{""}</EN>
+                            <EN>
+                                Mainly I focus on portrait and people
+                                photography. Every person is unique and
+                                wonderfully created by our God and I try to
+                                capture that in my pictures.
+                            </EN>
                         </LocalizedLabel>
                     </p>
                     <p>
                         <LocalizedLabel>
                             <DE>
-                                Wenn dich meine Werke interessieren: Du kannst
-                                eine Auswahl davon in meinem{" "}
+                                Wenn dich meine Werke interessieren: Viele
+                                meiner Bilder sind auf{" "}
                             </DE>
-                            <EN>{""}</EN>
-                        </LocalizedLabel>
-                        <Link href="/portfolio">
-                            <LocalizedLabel de="Portfolio" en="Portfolio" />
-                        </Link>
-                        <LocalizedLabel>
-                            <DE>
-                                {" "}
-                                anschauen. Außerdem poste ich viele meiner Werke
-                                auf{" "}
-                            </DE>
-                            <EN>{""}</EN>
+                            <EN>
+                                If you are interested in my works: Many of my
+                                photos are on{" "}
+                            </EN>
                         </LocalizedLabel>
                         <a
                             href="https://www.instagram.com/lennardfi/"
@@ -73,9 +72,9 @@ const Portfolio = () => {
                         >
                             <LocalizedLabel de="Instagram" en="Instagram" />
                         </a>
+                        <LocalizedLabel de="." en="." />
                         {/* <Link href="https://www.instagram.com/lennardfi/">
                         </Link> */}
-                        <LocalizedLabel de="." en="." />
                     </p>
                 </div>
             </div>

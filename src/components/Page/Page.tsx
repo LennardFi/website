@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
 import React, { useContext } from "react"
-import { FaInstagram, FaTiktok } from "react-icons/fa"
+import { FaInstagram } from "react-icons/fa"
 import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
 import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
 import Navigation from "../Navigation/Navigation"
@@ -65,15 +65,19 @@ const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
                             <hr />
                             <ul className={styles.socialMedia}>
                                 <li>
-                                    <Link href="https://www.instagram.com/lennardfi/">
+                                    <a
+                                        href="https://www.instagram.com/lennardfi/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
                                         <FaInstagram />
-                                    </Link>
+                                    </a>
                                 </li>
-                                <li>
-                                    <Link href="https://www.tiktok.com/@lennardfi">
+                                {/* <li>
+                                    <Link href="https://www.tiktok.com/@lennardfi" target="_blank" rel="noreferrer">
                                         <FaTiktok />
                                     </Link>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </footer>

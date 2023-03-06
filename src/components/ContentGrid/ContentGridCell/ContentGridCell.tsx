@@ -15,7 +15,8 @@ export interface EmptyContentGridCellProps extends ContentGridCellPropsBase {
 
 export interface ImageContentGridCellProps extends ContentGridCellPropsBase {
     image: StaticImageData
-    label?: [DE: string, EN: string]
+    de?: string
+    en?: string
 }
 
 export interface TextContentGridCellProps extends ContentGridCellPropsBase {
@@ -43,8 +44,8 @@ const ContentGridCell = (props: ContentGridCellProps) => {
                 style={props.style}
                 src={props.image}
                 height={500}
-                de={props.label?.[0] ?? ""}
-                en={props.label?.[1] ?? ""}
+                de={props.de ?? ""}
+                en={props.en ?? ""}
             />
         )
     }

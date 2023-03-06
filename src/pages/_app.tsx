@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app"
 import { useState } from "react"
-import ImageViewer from "../components/ImageViewer/ImageViewer/ImageViewer"
+import ImageViewer from "../components/ImageViewer/ImageViewer"
 import ImageViewContext from "../context/ImageViewContext/ImageViewContext"
 import LocalizationContext from "../context/LocalizationContext/LocalizationContext"
 import "../styles/globals.scss"
