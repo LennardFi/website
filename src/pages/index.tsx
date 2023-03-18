@@ -21,11 +21,11 @@ import ContentGridCell from "../components/ContentGrid/ContentGridCell/ContentGr
 import LocalizedLabel from "../components/LocalizedLabel/LocalizedLabel"
 import Page from "../components/Page/Page"
 import { getDimensionValue } from "../lib/helpers"
-import styles from "../styles/portfolio.module.scss"
+import styles from "./index.module.scss"
 
 const Portfolio = () => {
     return (
-        <Page className={styles.portfolio} showNav>
+        <Page className={styles.portfolio} fullWidth>
             <LocalizedLabel component="h2" de="Porträts" en="Portraits" />
             <ContentGrid
                 columns={[1, 3, 3, 3]}

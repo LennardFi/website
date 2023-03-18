@@ -5,11 +5,11 @@ import LocalizedLabel, {
     EN,
 } from "../components/LocalizedLabel/LocalizedLabel"
 import Page from "../components/Page/Page"
-import styles from "../styles/about.module.scss"
+import styles from "./about.module.scss"
 
-const Portfolio = () => {
+const About = () => {
     return (
-        <Page pageTitle={["Über mich", "About me"]} showNav>
+        <Page fullWidth pageTitle={["Über mich", "About me"]}>
             <div className={styles.container}>
                 <Image
                     alt="Profile picture"
@@ -82,4 +82,4 @@ const Portfolio = () => {
     )
 }
 
-export default Portfolio
+export default About

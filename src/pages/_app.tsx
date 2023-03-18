@@ -3,6 +3,7 @@ import { useState } from "react"
 import ImageViewer from "../components/ImageViewer/ImageViewer"
 import ImageViewContext from "../context/ImageViewContext/ImageViewContext"
 import LocalizationContext from "../context/LocalizationContext/LocalizationContext"
+import "../styles/normalize.css"
 import "../styles/globals.scss"
 import Website, { Maybe } from "../typings"
 

@@ -1,0 +1,63 @@
+@use "../../styles/core.module.scss" as core;
+
+.footer {
+    border-top: core.$size-border-default solid core.$color-light-accent-2;
+
+    .container {
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        max-width: core.$size-breakpoint-small;
+        padding: core.getDimensionValue(1);
+
+        a {
+            color: core.$color-neutral-black;
+        }
+
+        ul.links {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            gap: core.getDimensionValue(1);
+            list-style: none;
+            margin: 0;
+            padding: core.getDimensionValue(1);
+
+            a {
+                &:focus,
+                &:active {
+                    color: core.$color-light-accent-2;
+                }
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        color: core.$color-light-accent-2;
+                    }
+                }
+            }
+        }
+
+        hr {
+            border-color: core.$color-light-accent-2;
+            border-right: 0px;
+            border-style: solid;
+        }
+
+        ul.socialMedia {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            gap: core.getDimensionValue(2);
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: core.getDimensionValue(1) core.getDimensionValue(2);
+
+            li {
+                font-size: core.$size-font-default * 2;
+            }
+        }
+    }
+}

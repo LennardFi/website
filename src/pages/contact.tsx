@@ -6,8 +6,8 @@ import LocalizedLabel, {
 import Page from "../components/Page/Page"
 import LocalizationContext from "../context/LocalizationContext/LocalizationContext"
 import useIsMounted from "../hooks/useIsMounted"
-import styles from "../styles/contact.module.scss"
 import Website, { Maybe } from "../typings"
+import styles from "./contact.module.scss"
 
 const Contact = () => {
     const isMountedRef = useIsMounted()
@@ -67,24 +67,26 @@ const Contact = () => {
                     }, 2000)
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [requestSent])
 
     return (
-        <Page pageTitle={["Kontakt", "Contact"]} showNav>
+        <Page pageTitle={["Kontakt", "Contact"]}>
             <form className={styles.form} onSubmit={submit}>
                 <p className={styles.info}>
                     <LocalizedLabel>
                         <DE>
-                            Du möchtest ein Shooting mit mir vereinbaren? Dann
-                            bist du hier genau richtig. Schreibe mir in einer
-                            Nachricht, was du dir vorstellst und ich melde mich
-                            schnellst möglichst bei dir.
+                            Du möchtest ein kostenloses Shooting mit mir
+                            vereinbaren? Dann bist du hier genau richtig.
+                            Schreibe mir in einer Nachricht, was du dir
+                            vorstellst und ich melde mich schnellst möglichst
+                            bei dir.
                         </DE>
                         <EN>
-                            You want to arrange a shooting with me? Then you are
-                            at the right place. Write me in a message what you
-                            have in mind and I&apos;ll get back to you as soon
-                            as possible.
+                            You want to arrange a free shooting with me? Then
+                            you are at the right place. Write me in a message
+                            what you have in mind and I&apos;ll get back to you
+                            as soon as possible.
                         </EN>
                     </LocalizedLabel>
                 </p>

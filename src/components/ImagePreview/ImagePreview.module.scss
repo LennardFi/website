@@ -2,9 +2,4 @@
 
 .imagePreview {
     cursor: pointer;
-    transition: filter ease-in-out 0.2s;
-
-    &:hover {
-        filter: grayscale(40%);
-    }
 }

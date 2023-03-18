@@ -6,12 +6,25 @@ declare namespace Website {
             phone: string
             description: string
         }
+
+        type ContactResponseType = "error" | "ok"
     }
 
     namespace Base {
         type Localization = "DE" | "EN"
 
         type DeviceSize = "small" | "normal" | "large" | "x-large"
+    }
+
+    namespace Config {
+        interface MailingConfig {
+            host: string
+            port: number
+            user: string
+            password: string
+            toMailAddress: string
+            fromMailAddress: string
+        }
     }
 
     namespace ContentGrid {

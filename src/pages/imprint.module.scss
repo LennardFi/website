@@ -1,0 +1,11 @@
+@use "../styles/core.module.scss" as core;
+
+.imprint {
+    p {
+        text-align: center;
+    }
+
+    .source {
+        font-size: core.getDimensionValue(1.8);
+    }
+}

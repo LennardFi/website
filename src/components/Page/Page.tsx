@@ -1,20 +1,35 @@
 import Head from "next/head"
-import Link from "next/link"
 import React, { useContext } from "react"
-import { FaInstagram } from "react-icons/fa"
 import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
-import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
+import Footer from "../Footer/Footer"
 import Navigation from "../Navigation/Navigation"
 import styles from "./Page.module.scss"
 
 interface PageProps extends React.HTMLProps<HTMLDivElement> {
     children?: React.ReactNode
+    containerProps?: React.HTMLProps<HTMLDivElement>
+    hideNav?: boolean
+    hideFooter?: boolean
+    /**
+     * Disable default mechanism to limit content width to 680px.
+     */
+    fullWidth?: boolean
     pageTitle?: [DE: string, EN: string]
-    showNav?: boolean
 }
 
-const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
+const Page = ({
+    children,
+    className,
+    containerProps,
+    hideNav,
+    hideFooter,
+    fullWidth,
+    pageTitle,
+    ...rest
+}: PageProps) => {
     const localizationContext = useContext(LocalizationContext)
+    const { className: containerClassName, ...containerRest } =
+        containerProps ?? {}
 
     return (
         <>
@@ -28,10 +43,20 @@ const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
             </Head>
 
             <div className={styles.page}>
-                {showNav ? <Navigation /> : undefined}
+                {hideNav ? undefined : <Navigation />}
 
-                <div className={styles.container}>
-                    <main {...rest}>
+                <div
+                    className={`${styles.container} ${
+                        containerClassName ?? ""
+                    }`}
+                    {...containerRest}
+                >
+                    <main
+                        className={`${fullWidth ? "" : styles.limitWidth} ${
+                            className ?? ""
+                        }`}
+                        {...rest}
+                    >
                         {pageTitle === undefined ? undefined : (
                             <h1 className={styles.title}>
                                 {localizationContext.currentLanguage === "DE"
@@ -42,45 +67,7 @@ const Page = ({ children, pageTitle, showNav, ...rest }: PageProps) => {
                         {children}
                     </main>
 
-                    <footer>
-                        <div className={styles.container}>
-                            <ul className={styles.links}>
-                                <li>
-                                    <Link href="/privacy">
-                                        <LocalizedLabel
-                                            de="Datenschutzerklärung"
-                                            en="Privacy policy"
-                                        />
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/inprint">
-                                        <LocalizedLabel
-                                            de="Impressum"
-                                            en="inprint"
-                                        />
-                                    </Link>
-                                </li>
-                            </ul>
-                            <hr />
-                            <ul className={styles.socialMedia}>
-                                <li>
-                                    <a
-                                        href="https://www.instagram.com/lennardfi/"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        <FaInstagram />
-                                    </a>
-                                </li>
-                                {/* <li>
-                                    <Link href="https://www.tiktok.com/@lennardfi" target="_blank" rel="noreferrer">
-                                        <FaTiktok />
-                                    </Link>
-                                </li> */}
-                            </ul>
-                        </div>
-                    </footer>
+                    {hideFooter ? undefined : <Footer />}
                 </div>
             </div>
         </>

@@ -29,6 +29,7 @@ const Navigation = (props: NavigationProps) => {
             <button
                 className={styles.menuSwitch}
                 onClick={() => setShowMenu((prev) => !prev)}
+                type="button"
             >
                 {showMenu ? <TfiClose /> : <TfiMenu />}
             </button>
@@ -57,9 +58,9 @@ const Navigation = (props: NavigationProps) => {
                         <LocalizedLabel de="Über mich" en="About me" />
                     </Link>
                 </li>
-                <li>
+                <li className={styles.languageSwitch}>
                     <button
-                        className={styles.languageSwitch}
+                        type="button"
                         onClick={() =>
                             localizationContext.setLanguage(
                                 localizationContext.currentLanguage === "DE"

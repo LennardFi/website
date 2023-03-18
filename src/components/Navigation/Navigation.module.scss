@@ -35,12 +35,18 @@
 
             a {
                 color: inherit;
+                font-family: Raleway;
                 text-decoration: none;
 
-                &:hover,
                 &:focus,
                 &:active {
                     color: core.$color-light-accent-2;
+                }
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        color: core.$color-light-accent-2;
+                    }
                 }
             }
 
@@ -48,15 +54,20 @@
                 a {
                     color: core.$color-light-accent-1;
 
-                    &:hover,
                     &:focus,
                     &:active {
                         color: core.$color-light-accent-2;
                     }
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            color: core.$color-light-accent-2;
+                        }
+                    }
                 }
             }
 
-            .languageSwitch {
+            &.languageSwitch > button {
                 background: transparent;
                 border: none;
                 cursor: pointer;
@@ -103,11 +114,15 @@
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-            gap: core.getDimensionValue(8);
+            gap: core.getDimensionValue(6);
             grid-column: 2 / 4;
             grid-row: 1 / 2;
             justify-content: flex-start;
-            max-width: core.$size-breakpoint-small;
+
+            .languageSwitch {
+                margin-left: auto;
+                margin-right: core.getDimensionValue(6);
+            }
         }
 
         button.menuSwitch {

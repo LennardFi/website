@@ -22,12 +22,13 @@ const ImageViewer = ({ close, label, src }: ImageViewerProps) => {
         return () => {
             router.beforePopState(() => true)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router])
 
     return (
         <div className={styles.ImageViewer}>
             <div className={styles.toolbar}>
-                <button className={styles.close} onClick={close}>
+                <button type="button" className={styles.close} onClick={close}>
                     {<TfiClose className={styles.closeImage} />}
                 </button>
             </div>
@@ -44,7 +45,15 @@ const ImageViewer = ({ close, label, src }: ImageViewerProps) => {
                         src={src}
                     />
                 </div>
-                <p className={styles.description}>{label}</p>
+                <p
+                    className={styles.description}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}
+                >
+                    {label}
+                </p>
             </div>
         </div>
     )

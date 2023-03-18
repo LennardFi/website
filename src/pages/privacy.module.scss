@@ -1,0 +1,10 @@
+@use "../styles/core.module.scss" as core;
+
+.privacy {
+    h1 {
+        margin: 0;
+        line-height: 1.15;
+        font-size: core.$size-font-title;
+        text-align: center;
+    }
+}

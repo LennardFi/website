@@ -1,0 +1,66 @@
+@use "../styles/core.module.scss" as core;
+
+.container {
+    padding: 0 !important;
+}
+
+.links {
+    background-image: url(../../content/links/DSCF7872-edited.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 !important;
+    padding: core.getDimensionValue(8) core.getDimensionValue(0) !important;
+    justify-content: flex-start !important;
+
+    h1 {
+        color: white;
+        text-shadow: core.getDimensionValue(0.5) core.getDimensionValue(0.5)
+            black;
+    }
+
+    .table {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: core.getDimensionValue(2);
+        width: 100%;
+        padding: core.getDimensionValue(4);
+
+        .entry {
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            align-items: center;
+            gap: core.getDimensionValue(4);
+            padding: core.getDimensionValue(2);
+            background: white;
+            color: core.$color-neutral-black;
+
+            &:focus,
+            &:active {
+                color: core.$color-light-accent-1;
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    color: core.$color-light-accent-1;
+                }
+            }
+
+            .icon {
+                color: inherit;
+                display: block;
+                height: core.getDimensionValue(4);
+                width: auto;
+            }
+
+            .label {
+                color: inherit;
+                font-size: core.getDimensionValue(2);
+            }
+        }
+    }
+}
