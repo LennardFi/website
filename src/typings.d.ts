@@ -24,6 +24,10 @@ declare namespace Website {
             password: string
             toMailAddress: string
             fromMailAddress: string
+            /**
+             * Add development hint in e-mail
+             */
+            dev?: boolean
         }
     }
 

@@ -51,14 +51,18 @@ export const sendMail = async (
                 address: config.fromMailAddress,
                 name: "Website Kontaktformular",
             },
-            subject: `Foto-Anfrage per Mail von ${contactName}`,
+            subject: config.dev
+                ? `Test-Mail`
+                : `Foto-Anfrage per Mail von ${contactName}`,
             html: `
 <style>
 * {
-    font-family: "Fira Code", "Fira Code VF", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: Raleway, "Open Sans", "Fira Code", "Fira Code VF", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 </style>
-<h1>Neue Kontaktaufnahme über das Kontaktformular:<h1>
+<h1>Neue ${
+                config.dev ? "Test-" : ""
+            }Kontaktaufnahme über das Kontaktformular:<h1>
 <h2>Name</h2>
 <p>${contactName}</p>
 <h2>Mail</h2>
