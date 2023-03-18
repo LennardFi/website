@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { FaGlobe, FaInstagram, FaTiktok } from "react-icons/fa"
+import BackgroundImage from "../../content/links/DSCF7872-edited.jpg"
 import LocalizedLabel from "../components/LocalizedLabel/LocalizedLabel"
 import Page from "../components/Page/Page"
 import styles from "./links.module.scss"
@@ -12,6 +13,7 @@ export default function Links() {
             hideNav
             hideFooter
             pageTitle={["Links", "Links"]}
+            background={BackgroundImage}
         >
             <div className={styles.table}>
                 <Link className={styles.entry} href="/">

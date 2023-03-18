@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Image, { StaticImageData } from "next/image"
 import React, { useContext } from "react"
 import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
 import Footer from "../Footer/Footer"
@@ -6,6 +7,7 @@ import Navigation from "../Navigation/Navigation"
 import styles from "./Page.module.scss"
 
 interface PageProps extends React.HTMLProps<HTMLDivElement> {
+    background?: StaticImageData
     children?: React.ReactNode
     containerProps?: React.HTMLProps<HTMLDivElement>
     hideNav?: boolean
@@ -18,6 +20,7 @@ interface PageProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const Page = ({
+    background,
     children,
     className,
     containerProps,
@@ -42,7 +45,22 @@ const Page = ({
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className={styles.page}>
+            {background === undefined ? undefined : (
+                <Image
+                    alt="Page background"
+                    fill
+                    src={background}
+                    style={{
+                        objectFit: "cover",
+                    }}
+                />
+            )}
+
+            <div
+                className={`${styles.page} ${
+                    background !== undefined ? styles.withBackground : ""
+                }`}
+            >
                 {hideNav ? undefined : <Navigation />}
 
                 <div
