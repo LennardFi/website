@@ -34,6 +34,13 @@ const ImagePreview = ({
     return (
         <Image
             alt={localizationContext.currentLanguage === "DE" ? de : en}
+            blurDataURL={
+                typeof src === "string"
+                    ? undefined
+                    : "default" in src
+                    ? src.default.blurDataURL
+                    : src.blurDataURL
+            }
             className={`${styles.imagePreview} ${className ?? ""}`}
             height={500}
             onClick={() =>
@@ -45,6 +52,7 @@ const ImagePreview = ({
                     src: src,
                 })
             }
+            placeholder="blur"
             src={src}
             {...rest}
         />

@@ -36,12 +36,20 @@ const ImageViewer = ({ close, label, src }: ImageViewerProps) => {
                 <div className={styles.wrapper}>
                     <Image
                         alt={label}
+                        blurDataURL={
+                            typeof src === "string"
+                                ? undefined
+                                : "default" in src
+                                ? src.default.blurDataURL
+                                : src.blurDataURL
+                        }
                         className={styles.image}
                         height={1500}
                         onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
                         }}
+                        placeholder="blur"
                         src={src}
                     />
                 </div>
