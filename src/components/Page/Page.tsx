@@ -1,5 +1,5 @@
 import Head from "next/head"
-import Image, { StaticImageData } from "next/image"
+import { StaticImageData } from "next/image"
 import React, { useContext } from "react"
 import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
 import Footer from "../Footer/Footer"
@@ -46,14 +46,15 @@ const Page = ({
             </Head>
 
             {background === undefined ? undefined : (
-                <Image
-                    alt="Page background"
-                    fill
-                    src={background}
-                    style={{
-                        objectFit: "cover",
-                    }}
-                />
+                // <Image
+                //     alt="Page background"
+                //     fill
+                //     src={background}
+                //     style={{
+                //         objectFit: "cover",
+                //     }}
+                // />
+                <div className={styles.background}></div>
             )}
 
             <div
