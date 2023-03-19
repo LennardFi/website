@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FaGlobe, FaInstagram, FaTiktok } from "react-icons/fa"
+import { FaCamera, FaGlobe, FaInstagram, FaTiktok } from "react-icons/fa"
 import BackgroundImage from "../../content/links/DSCF7872-edited.jpg"
 import LocalizedLabel from "../components/LocalizedLabel/LocalizedLabel"
 import Page from "../components/Page/Page"
@@ -20,6 +20,15 @@ export default function Links() {
                     <FaGlobe className={styles.icon} />
                     <div className={styles.label}>
                         <LocalizedLabel de="Website" en="Website" />
+                    </div>
+                </Link>
+                <Link className={styles.entry} href="/contact">
+                    <FaCamera className={styles.icon} />
+                    <div className={styles.label}>
+                        <LocalizedLabel
+                            de="Kostenloses Shooting vereinbaren"
+                            en="Arrange shooting"
+                        />
                     </div>
                 </Link>
                 <Link
