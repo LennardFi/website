@@ -17,11 +17,21 @@ export interface ImageContentGridCellProps extends ContentGridCellPropsBase {
     image: StaticImageData
     de?: string
     en?: string
+    /**
+     * Renders the label in the Image Viewer as an anchor element with a
+     * reference to the given URL or path.
+     */
+    href?: string
 }
 
 export interface TextContentGridCellProps extends ContentGridCellPropsBase {
     de: string
     en: string
+    /**
+     * Renders the label as an anchor element with a
+     * reference to the given URL or path.
+     */
+    href?: string
 }
 
 export interface ChildrenContentGridCellProps extends ContentGridCellPropsBase {
@@ -44,6 +54,7 @@ const ContentGridCell = (props: ContentGridCellProps) => {
                 style={props.style}
                 src={props.image}
                 height={500}
+                href={props.href}
                 de={props.de ?? ""}
                 en={props.en ?? ""}
             />
@@ -60,11 +71,19 @@ const ContentGridCell = (props: ContentGridCellProps) => {
 
     return (
         <div className={styles.cell}>
-            <div>
-                {localizationContext.currentLanguage === "DE"
-                    ? props.de
-                    : props.en}
-            </div>
+            {props.href === undefined ? (
+                <div>
+                    {localizationContext.currentLanguage === "DE"
+                        ? props.de
+                        : props.en}
+                </div>
+            ) : (
+                <a href={props.href}>
+                    {localizationContext.currentLanguage === "DE"
+                        ? props.de
+                        : props.en}
+                </a>
+            )}
         </div>
     )
 }

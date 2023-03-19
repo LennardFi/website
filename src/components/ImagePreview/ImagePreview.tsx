@@ -15,6 +15,11 @@ export interface ImagePreviewProps extends Omit<ImageProps, "alt"> {
      */
     en: string
     /**
+     * Renders the label in the Image Viewer as an anchor element with a
+     * reference to the given URL or path.
+     */
+    href?: string
+    /**
      *
      */
     imageList?: Website.ImageViewer.ImageDetails[]
@@ -26,6 +31,7 @@ const ImagePreview = ({
     en,
     imageList,
     src,
+    href,
     ...rest
 }: ImagePreviewProps) => {
     const localizationContext = useContext(LocalizationContext)
@@ -50,6 +56,7 @@ const ImagePreview = ({
                         EN: en,
                     },
                     src: src,
+                    href,
                 })
             }
             placeholder="blur"

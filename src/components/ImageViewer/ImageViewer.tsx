@@ -8,9 +8,14 @@ interface ImageViewerProps {
     close(): void
     label: string
     src: ImageProps["src"]
+    /**
+     * Renders the label in the Image Viewer as an anchor element with a
+     * reference to the given URL or path.
+     */
+    href?: string
 }
 
-const ImageViewer = ({ close, label, src }: ImageViewerProps) => {
+const ImageViewer = ({ close, label, src, href }: ImageViewerProps) => {
     useEffect(() => {
         router.beforePopState(({ as }) => {
             if (as !== router.asPath) {
@@ -53,15 +58,29 @@ const ImageViewer = ({ close, label, src }: ImageViewerProps) => {
                         src={src}
                     />
                 </div>
-                <p
-                    className={styles.description}
-                    onClick={(e) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                    }}
-                >
-                    {label}
-                </p>
+                {href === undefined ? (
+                    <p
+                        className={styles.description}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                        }}
+                    >
+                        {label}
+                    </p>
+                ) : (
+                    <a
+                        className={styles.description}
+                        href={href}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                        }}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        {label}
+                    </a>
+                )}
             </div>
         </div>
     )

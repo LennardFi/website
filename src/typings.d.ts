@@ -62,6 +62,7 @@ declare namespace Website {
         interface ImageDetails {
             label: Record<Base.Localization, string>
             src: ImageProps["src"]
+            href?: string
         }
     }
 }

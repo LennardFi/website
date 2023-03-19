@@ -111,11 +111,13 @@ const Portfolio = () => {
                     image={Img_BusinessBestImmobilien1}
                     de="Komron Akbari von Best Immobilien Marburg"
                     en={'Komron Akbari from Best Immobilien Marburg"'}
+                    href="https://www.best-immobilien-marburg.de/"
                 />
                 <ContentGridCell
                     image={Img_BusinessBestImmobilien2}
                     de="Komron Akbari von Best Immobilien Marburg"
                     en={'Komron Akbari from Best Immobilien Marburg"'}
+                    href="https://www.best-immobilien-marburg.de/"
                 />
             </ContentGrid>
             <LocalizedLabel component="h2" de="Hunde" en="Dogs" />

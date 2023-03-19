@@ -4,6 +4,7 @@ import ImageViewer from "../components/ImageViewer/ImageViewer"
 import ImageViewContext from "../context/ImageViewContext/ImageViewContext"
 import LocalizationContext from "../context/LocalizationContext/LocalizationContext"
 import "../styles/normalize.css"
+
 import "../styles/globals.scss"
 import Website, { Maybe } from "../typings"
 
@@ -37,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
                                 : currentImagePreview.label.EN
                         }
                         src={currentImagePreview.src}
+                        href={currentImagePreview.href}
                     />
                 ) : null}
             </ImageViewContext.Provider>
