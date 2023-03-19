@@ -1,7 +1,7 @@
 import Img_BusinessBestImmobilien1 from "../../content/portfolio/business/DSCF0639-edited.jpg"
 import Img_BusinessBestImmobilien2 from "../../content/portfolio/business/DSCF0680-edited.jpg"
-import Img_BusinessEinfachversichert1 from "../../content/portfolio/business/DSCF0929-edited.jpg"
-import Img_BusinessEinfachversichert2 from "../../content/portfolio/business/DSCF0997-edited.jpg"
+import Img_BusinessEinfachversichert2 from "../../content/portfolio/business/DSCF0929-edited.jpg"
+import Img_BusinessEinfachversichert1 from "../../content/portfolio/business/DSCF0997-edited.jpg"
 import Img_Seagull from "../../content/portfolio/nature/DSCF3307-edited.jpg"
 import Img_DogAtTheBeach from "../../content/portfolio/pets/DSCF4577-edited.jpg"
 import Img_DogInCity from "../../content/portfolio/pets/DSCF7658-edited.jpg"
@@ -90,14 +90,16 @@ const Portfolio = () => {
                 }}
             >
                 <ContentGridCell
-                    image={Img_BusinessEinfachversichert2}
-                    de="Justin von Einfach Versichert"
-                    en={'Justin from "Einfach Versichert"'}
+                    image={Img_BusinessEinfachversichert1}
+                    de="Justin von Latuszek Finanzberatung"
+                    en={'Justin from "Latuszek Finanzberatung"'}
+                    href="https://www.instagram.com/einfachversichert_gmbh/"
                 />
                 <ContentGridCell
-                    image={Img_BusinessEinfachversichert1}
-                    de="Justin von Einfach Versichert"
-                    en={'Justin from "Einfach Versichert"'}
+                    image={Img_BusinessEinfachversichert2}
+                    de="Justin von Latuszek Finanzberatung"
+                    en={'Justin from "Latuszek Finanzberatung"'}
+                    href="https://www.instagram.com/einfachversichert_gmbh/"
                 />
             </ContentGrid>
             <ContentGrid
