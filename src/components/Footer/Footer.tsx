@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FaInstagram, FaTiktok } from "react-icons/fa"
+import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa"
 import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
 import styles from "./Footer.module.scss"
 
@@ -47,6 +47,15 @@ const Footer = () => {
                             rel="noreferrer"
                         >
                             <FaTiktok />
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            href="https://www.youtube.de/@lennardfi"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <FaYoutube />
                         </Link>
                     </li>
                 </ul>

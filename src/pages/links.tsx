@@ -1,5 +1,11 @@
 import Link from "next/link"
-import { FaCamera, FaGlobe, FaInstagram, FaTiktok } from "react-icons/fa"
+import {
+    FaCamera,
+    FaGlobe,
+    FaInstagram,
+    FaTiktok,
+    FaYoutube,
+} from "react-icons/fa"
 import BackgroundImage from "../../content/links/DSCF7872-edited.jpg"
 import LocalizedLabel from "../components/LocalizedLabel/LocalizedLabel"
 import Page from "../components/Page/Page"
@@ -51,6 +57,17 @@ export default function Links() {
                     <FaTiktok className={styles.icon} />
                     <div className={styles.label}>
                         <LocalizedLabel de="TikTok" en="TikTok" />
+                    </div>
+                </Link>
+                <Link
+                    className={styles.entry}
+                    href="https://www.youtube.de/@lennardfi"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <FaYoutube className={styles.icon} />
+                    <div className={styles.label}>
+                        <LocalizedLabel de="YouTube" en="YouTube" />
                     </div>
                 </Link>
             </div>
