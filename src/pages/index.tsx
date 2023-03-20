@@ -9,6 +9,7 @@ import Img_DogInNature from "../../content/portfolio/pets/DSCF7666-edited.jpg"
 import Img_DogInSnow from "../../content/portfolio/pets/DSCF9569-edited.jpg"
 import Img_MarioWithCamera1 from "../../content/portfolio/portraits/DSCF2101-edited.jpg"
 import Img_MarioWithCamera2 from "../../content/portfolio/portraits/DSCF2105-edited.jpg"
+import Img_WomanInMarburg from "../../content/portfolio/portraits/DSCF3197-cropped.jpg"
 import Img_BrazilianWomanInMarburg from "../../content/portfolio/portraits/DSCF7225-edited.jpg"
 import Img_GuitarPlayerInMarburg from "../../content/portfolio/portraits/DSCF7268-edited.jpg"
 import Img_ManInMarburg from "../../content/portfolio/portraits/DSCF7473-edited.jpg"
@@ -28,13 +29,14 @@ const Portfolio = () => {
         <Page className={styles.portfolio} fullWidth>
             <LocalizedLabel component="h2" de="Porträts" en="Portraits" />
             <ContentGrid
-                columns={[1, 3, 3, 3]}
+                columns={[1, 2, 2, 2]}
                 gap={2}
                 style={{
                     margin: "0",
                 }}
             >
                 <ContentGridCell image={Img_ManInMarburg} />
+                <ContentGridCell image={Img_WomanInMarburg} />
                 <ContentGridCell image={Img_BrazilianWomanInMarburg} />
                 <ContentGridCell image={Img_GuitarPlayerInMarburg} />
             </ContentGrid>
