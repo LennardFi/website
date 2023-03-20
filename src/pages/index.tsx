@@ -36,7 +36,12 @@ const Portfolio = () => {
                 }}
             >
                 <ContentGridCell image={Img_ManInMarburg} />
-                <ContentGridCell image={Img_WomanInMarburg} />
+                <ContentGridCell
+                    image={Img_WomanInMarburg}
+                    de="Bekannt aus dem TikTok-Video"
+                    en="Known from the TikTok-Video"
+                    href="https://www.tiktok.com/@lennardfi/video/7212247113214971141"
+                />
                 <ContentGridCell image={Img_BrazilianWomanInMarburg} />
                 <ContentGridCell image={Img_GuitarPlayerInMarburg} />
             </ContentGrid>
