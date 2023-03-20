@@ -1,3 +1,4 @@
+import { DE as DeFlag, US as UsFlag } from "country-flag-icons/react/3x2"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -69,9 +70,11 @@ const Navigation = (props: NavigationProps) => {
                             )
                         }
                     >
-                        {localizationContext.currentLanguage === "DE"
-                            ? "🇺🇸"
-                            : "🇩🇪"}
+                        {localizationContext.currentLanguage === "DE" ? (
+                            <UsFlag title="Englisch" />
+                        ) : (
+                            <DeFlag title="German" />
+                        )}
                     </button>
                 </li>
             </ul>
