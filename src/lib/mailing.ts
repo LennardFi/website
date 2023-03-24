@@ -46,7 +46,6 @@ export const sendMail = async (
     client.sendMail(
         {
             to: config.toMailAddress,
-            cc: contactMail,
             from: {
                 address: config.fromMailAddress,
                 name: "Website Kontaktformular",
