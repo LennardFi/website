@@ -15,11 +15,13 @@ body {
 @font-face {
     font-family: "Open Sans";
     src: url("../public/OpenSans-VariableFont.ttf");
+    font-display: swap;
 }
 
 @font-face {
     font-family: Raleway;
     src: url("../public/Raleway-VariableFont.ttf");
+    font-display: swap;
 }
 
 a {
