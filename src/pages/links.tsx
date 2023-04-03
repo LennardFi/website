@@ -2,6 +2,7 @@ import Link from "next/link"
 import {
     FaCamera,
     FaGlobe,
+    FaInfoCircle,
     FaInstagram,
     FaTiktok,
     FaYoutube,
@@ -68,6 +69,21 @@ export default function Links() {
                     <FaYoutube className={styles.icon} />
                     <div className={styles.label}>
                         <LocalizedLabel de="YouTube" en="YouTube" />
+                    </div>
+                </Link>
+                <Link className={styles.entry} href="/imprint">
+                    <FaInfoCircle className={styles.icon} />
+                    <div className={styles.label}>
+                        <LocalizedLabel de="Impressum" en="Imprint" />
+                    </div>
+                </Link>
+                <Link className={styles.entry} href="/privacy">
+                    <FaInfoCircle className={styles.icon} />
+                    <div className={styles.label}>
+                        <LocalizedLabel
+                            de="Datenschutzerklärung"
+                            en="Privacy"
+                        />
                     </div>
                 </Link>
             </div>
