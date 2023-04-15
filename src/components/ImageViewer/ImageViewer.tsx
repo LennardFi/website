@@ -49,7 +49,6 @@ const ImageViewer = ({ close, label, src, href }: ImageViewerProps) => {
                                 : src.blurDataURL
                         }
                         className={styles.image}
-                        height={1500}
                         onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
