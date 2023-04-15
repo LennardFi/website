@@ -1,5 +1,6 @@
 import Head from "next/head"
 import { StaticImageData } from "next/image"
+import { useRouter } from "next/router"
 import React, { useContext } from "react"
 import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
 import Footer from "../Footer/Footer"
@@ -31,6 +32,8 @@ const Page = ({
     ...rest
 }: PageProps) => {
     const localizationContext = useContext(LocalizationContext)
+    const router = useRouter()
+
     const { className: containerClassName, ...containerRest } =
         containerProps ?? {}
 
@@ -46,7 +49,11 @@ const Page = ({
                     name="google-site-verification"
                     content="FVvCo9UGFP9r1Y9HevRBMHGBhWFM9sd_8DF2zzRFGz4"
                 />
-                <link rel="icon" href="/favicon.ico" />
+                {/* <link rel="icon" href="/favicon.ico" /> */}
+                <link
+                    href={`https://lennard-fickus.de${router.asPath}`}
+                    rel="canonical"
+                />
             </Head>
 
             {background === undefined ? undefined : (
