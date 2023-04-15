@@ -3,6 +3,9 @@ import Img_BusinessBestImmobilien2 from "../../content/portfolio/business/DSCF06
 import Img_BusinessEinfachversichert2 from "../../content/portfolio/business/DSCF0929-edited.jpg"
 import Img_BusinessEinfachversichert1 from "../../content/portfolio/business/DSCF0997-edited.jpg"
 import Img_Seagull from "../../content/portfolio/nature/DSCF3307-edited.jpg"
+import Img_RedPanda3 from "../../content/portfolio/nature/DSCF4366-edited.jpg"
+import Img_RedPanda2 from "../../content/portfolio/nature/DSCF4508-edited.jpg"
+import Img_RedPanda1 from "../../content/portfolio/nature/DSCF4738-edited.jpg"
 import Img_DogAtTheBeach from "../../content/portfolio/pets/DSCF4577-edited.jpg"
 import Img_DogInCity from "../../content/portfolio/pets/DSCF7658-edited.jpg"
 import Img_DogInNature from "../../content/portfolio/pets/DSCF7666-edited.jpg"
@@ -158,18 +161,41 @@ const Portfolio = () => {
                     en="Dog in the snow"
                 />
             </ContentGrid>
-            <LocalizedLabel component="h2" de="Natur" en="Nature" />
+            <LocalizedLabel component="h2" de="Wilde Tiere" en="Wild animals" />
             <ContentGrid
-                columns={[1, 1, 1, 1]}
+                columns={[1, 2, 2, 2]}
                 gap={2}
                 style={{
-                    marginTop: "0",
+                    margin: "0",
                 }}
             >
                 <ContentGridCell
                     image={Img_Seagull}
                     de="Möwe am Strand"
                     en="Seagull at the beach"
+                />
+                <ContentGridCell
+                    image={Img_RedPanda2}
+                    de="Kleiner Panda im Karlsruher Zoo"
+                    en="Red panda in zoo in Karlsruhe, Germany"
+                />
+            </ContentGrid>
+            <ContentGrid
+                columns={[1, 2, 2, 2]}
+                gap={2}
+                style={{
+                    marginTop: getDimensionValue(2),
+                }}
+            >
+                <ContentGridCell
+                    image={Img_RedPanda1}
+                    de="Kleiner Panda im Karlsruher Zoo"
+                    en="Red panda in zoo in Karlsruhe, Germany"
+                />
+                <ContentGridCell
+                    image={Img_RedPanda3}
+                    de="Kleiner Panda im Karlsruher Zoo"
+                    en="Red panda in zoo in Karlsruhe, Germany"
                 />
             </ContentGrid>
         </Page>
