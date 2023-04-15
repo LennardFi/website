@@ -10,9 +10,11 @@ import Img_DogAtTheBeach from "../../content/portfolio/pets/DSCF4577-edited.jpg"
 import Img_DogInCity from "../../content/portfolio/pets/DSCF7658-edited.jpg"
 import Img_DogInNature from "../../content/portfolio/pets/DSCF7666-edited.jpg"
 import Img_DogInSnow from "../../content/portfolio/pets/DSCF9569-edited.jpg"
+import Img_WomanWithBlondHairAndSmoke from "../../content/portfolio/portraits/DSCF1588-edited.jpg"
 import Img_MarioWithCamera1 from "../../content/portfolio/portraits/DSCF2101-edited.jpg"
 import Img_MarioWithCamera2 from "../../content/portfolio/portraits/DSCF2105-edited.jpg"
-import Img_WomanInMarburg from "../../content/portfolio/portraits/DSCF3197-cropped.jpg"
+import Img_BlackWomanWithBlondHairsInMarburg from "../../content/portfolio/portraits/DSCF3197-cropped.jpg"
+import Img_UkraineWomanInMarburg from "../../content/portfolio/portraits/DSCF3522-Instagram.jpg"
 import Img_BrazilianWomanInMarburg from "../../content/portfolio/portraits/DSCF7225-edited.jpg"
 import Img_GuitarPlayerInMarburg from "../../content/portfolio/portraits/DSCF7268-edited.jpg"
 import Img_ManInMarburg from "../../content/portfolio/portraits/DSCF7473-edited.jpg"
@@ -32,21 +34,28 @@ const Portfolio = () => {
         <Page className={styles.portfolio} fullWidth>
             <LocalizedLabel component="h2" de="Porträts" en="Portraits" />
             <ContentGrid
-                columns={[1, 2, 2, 2]}
+                columns={[1, 2, 2, 3]}
                 gap={2}
                 style={{
                     margin: "0",
                 }}
             >
-                <ContentGridCell image={Img_ManInMarburg} />
                 <ContentGridCell
-                    image={Img_WomanInMarburg}
+                    image={Img_BlackWomanWithBlondHairsInMarburg}
                     de="Bekannt aus dem TikTok-Video"
                     en="Known from the TikTok-Video"
                     href="https://www.tiktok.com/@lennardfi/video/7212247113214971141"
                 />
+                <ContentGridCell image={Img_ManInMarburg} />
+                <ContentGridCell
+                    image={Img_UkraineWomanInMarburg}
+                    de="Bekannt aus dem Instagram-Reel"
+                    en="Known from the Instagram-Reel"
+                    href="https://www.instagram.com/reel/Cqd8SSSjuqk/"
+                />
                 <ContentGridCell image={Img_BrazilianWomanInMarburg} />
                 <ContentGridCell image={Img_GuitarPlayerInMarburg} />
+                <ContentGridCell image={Img_WomanWithBlondHairAndSmoke} />
             </ContentGrid>
             <ContentGrid
                 columns={[1, 2, 2, 2]}
