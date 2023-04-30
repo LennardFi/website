@@ -22,6 +22,10 @@ import Img_TrainInRotterdam from "../../content/portfolio/street-photography/DSC
 import Img_CoupleInAmsterdam from "../../content/portfolio/street-photography/DSCF5408-edited.jpg"
 import Img_ManAtTheBeach from "../../content/portfolio/street-photography/DSCF5648-edited.jpg"
 import Img_OberstadtPassageInMarburg from "../../content/portfolio/street-photography/DSCF6721-edited.jpg"
+import Img_WeddingLookingIntoEachOtherEyes from "../../content/portfolio/wedding/DSCF1932-edited.jpg"
+import Img_WeddingHoldingAndLookingIntoEachOtherEyes from "../../content/portfolio/wedding/DSCF1964-edited.jpg"
+import Img_WeddingHoldingWifeAndKiss from "../../content/portfolio/wedding/DSCF1974-edited.jpg"
+import Img_WeddingKissOnTheGrass from "../../content/portfolio/wedding/DSCF2184-edited.jpg"
 import ContentGrid from "../components/ContentGrid/ContentGrid/ContentGrid"
 import ContentGridCell from "../components/ContentGrid/ContentGridCell/ContentGridCell"
 import LocalizedLabel from "../components/LocalizedLabel/LocalizedLabel"
@@ -66,6 +70,29 @@ const Portfolio = () => {
             >
                 <ContentGridCell image={Img_MarioWithCamera1} />
                 <ContentGridCell image={Img_MarioWithCamera2} />
+            </ContentGrid>
+            <LocalizedLabel component="h2" de="Hochzeit" en="Wedding" />
+            <ContentGrid
+                columns={[1, 2, 2, 2]}
+                gap={2}
+                style={{
+                    margin: "0",
+                }}
+            >
+                <ContentGridCell
+                    image={Img_WeddingHoldingAndLookingIntoEachOtherEyes}
+                />
+                <ContentGridCell image={Img_WeddingHoldingWifeAndKiss} />
+            </ContentGrid>
+            <ContentGrid
+                columns={[1, 2, 2, 2]}
+                gap={2}
+                style={{
+                    marginTop: getDimensionValue(2),
+                }}
+            >
+                <ContentGridCell image={Img_WeddingLookingIntoEachOtherEyes} />
+                <ContentGridCell image={Img_WeddingKissOnTheGrass} />
             </ContentGrid>
             <LocalizedLabel
                 component="h2"
