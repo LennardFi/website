@@ -36,6 +36,9 @@ import styles from "./index.module.scss"
 const Portfolio = () => {
     return (
         <Page className={styles.portfolio} fullWidth>
+            {
+                //#region Portraits
+            }
             <LocalizedLabel component="h2" de="Porträts" en="Portraits" />
             <ContentGrid
                 columns={[1, 2, 2, 3]}
@@ -71,29 +74,12 @@ const Portfolio = () => {
                 <ContentGridCell image={Img_MarioWithCamera1} />
                 <ContentGridCell image={Img_MarioWithCamera2} />
             </ContentGrid>
-            <LocalizedLabel component="h2" de="Hochzeit" en="Wedding" />
-            <ContentGrid
-                columns={[1, 2, 2, 2]}
-                gap={2}
-                style={{
-                    margin: "0",
-                }}
-            >
-                <ContentGridCell
-                    image={Img_WeddingHoldingAndLookingIntoEachOtherEyes}
-                />
-                <ContentGridCell image={Img_WeddingHoldingWifeAndKiss} />
-            </ContentGrid>
-            <ContentGrid
-                columns={[1, 2, 2, 2]}
-                gap={2}
-                style={{
-                    marginTop: getDimensionValue(2),
-                }}
-            >
-                <ContentGridCell image={Img_WeddingLookingIntoEachOtherEyes} />
-                <ContentGridCell image={Img_WeddingKissOnTheGrass} />
-            </ContentGrid>
+            {
+                //#endregion
+            }
+            {
+                //#region Street photography
+            }
             <LocalizedLabel
                 component="h2"
                 de="Straßenfotografie"
@@ -127,7 +113,46 @@ const Portfolio = () => {
                     en="Upper Town Passage in Marburg"
                 />
             </ContentGrid>
-            <LocalizedLabel component="h2" de="Business" en="Business" />
+            {
+                //#endregion
+            }
+            {
+                //#region Wedding
+            }
+            <LocalizedLabel component="h2" de="Hochzeit" en="Wedding" />
+            <ContentGrid
+                columns={[1, 2, 2, 2]}
+                gap={2}
+                style={{
+                    margin: "0",
+                }}
+            >
+                <ContentGridCell
+                    image={Img_WeddingHoldingAndLookingIntoEachOtherEyes}
+                />
+                <ContentGridCell image={Img_WeddingHoldingWifeAndKiss} />
+            </ContentGrid>
+            <ContentGrid
+                columns={[1, 2, 2, 2]}
+                gap={2}
+                style={{
+                    marginTop: getDimensionValue(2),
+                }}
+            >
+                <ContentGridCell image={Img_WeddingLookingIntoEachOtherEyes} />
+                <ContentGridCell image={Img_WeddingKissOnTheGrass} />
+            </ContentGrid>
+            {
+                //#endregion
+            }
+            {
+                //#region Business portraits
+            }
+            <LocalizedLabel
+                component="h2"
+                de="Business Portraits"
+                en="Business portraits"
+            />
             <ContentGrid
                 columns={[1, 2, 2, 2]}
                 gap={2}
@@ -168,6 +193,12 @@ const Portfolio = () => {
                     href="https://www.best-immobilien-marburg.de/"
                 />
             </ContentGrid>
+            {
+                //#endregion
+            }
+            {
+                //#region Dogs
+            }
             <LocalizedLabel component="h2" de="Hunde" en="Dogs" />
             <ContentGrid
                 columns={[1, 2, 2, 2]}
@@ -197,6 +228,12 @@ const Portfolio = () => {
                     en="Dog in the snow"
                 />
             </ContentGrid>
+            {
+                //#endregion
+            }
+            {
+                //#region Wild animals
+            }
             <LocalizedLabel component="h2" de="Wilde Tiere" en="Wild animals" />
             <ContentGrid
                 columns={[1, 2, 2, 2]}
@@ -234,6 +271,9 @@ const Portfolio = () => {
                     en="Red panda in zoo in Karlsruhe, Germany"
                 />
             </ContentGrid>
+            {
+                //#endregion
+            }
         </Page>
     )
 }
