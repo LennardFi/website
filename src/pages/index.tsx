@@ -6,7 +6,7 @@ import Img_Seagull from "../../content/portfolio/nature/DSCF3307-edited.jpg"
 import Img_RedPanda3 from "../../content/portfolio/nature/DSCF4366-edited.jpg"
 import Img_RedPanda2 from "../../content/portfolio/nature/DSCF4508-edited.jpg"
 import Img_RedPanda1 from "../../content/portfolio/nature/DSCF4738-edited.jpg"
-import Img_DogAtTheBeach from "../../content/portfolio/pets/DSCF4577-edited.jpg"
+import Img_CuteDog from "../../content/portfolio/pets/DSCF6596-edited.jpg"
 import Img_DogInCity from "../../content/portfolio/pets/DSCF7658-edited.jpg"
 import Img_DogInNature from "../../content/portfolio/pets/DSCF7666-edited.jpg"
 import Img_DogInSnow from "../../content/portfolio/pets/DSCF9569-edited.jpg"
@@ -213,7 +213,7 @@ const Portfolio = () => {
                     en="Dog in Marburg"
                 />
                 <ContentGridCell
-                    image={Img_DogAtTheBeach}
+                    image={Img_CuteDog}
                     de="Hund am Strand"
                     en="Dog at the Beach"
                 />
