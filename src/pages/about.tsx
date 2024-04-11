@@ -27,12 +27,12 @@ const About = () => {
                             <DE>
                                 Ich bin Lennard Fickus.
                                 <br />
-                                24 Jahre alt, Programmierer und Hobbyfotograf.
+                                25 Jahre alt, Programmierer und Hobbyfotograf.
                             </DE>
                             <EN>
                                 I&apos;m Lennard Fickus
                                 <br />
-                                24 years old, developer and hobby photographer
+                                25 years old, developer and hobby photographer
                                 from Germany.
                             </EN>
                         </LocalizedLabel>
