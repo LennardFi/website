@@ -5,6 +5,7 @@ import { sendMail } from "../../lib/mailing"
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // TODO: Not implemented
     if (req.method === "POST") {
+        console.log(req.body)
         if (typeof req.body === "string") {
             try {
                 const v = JSON.parse(req.body) as unknown
@@ -13,7 +14,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
                     return sendMail(v.name, v.mail, v.phone, v.description)
                         .then(() => res.status(200).send(null))
                         .catch(() =>
-                            res.status(400).send("Could not send mail")
+                            res.status(400).send("Could not send mail"),
                         )
                 }
 
@@ -23,5 +24,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
             }
         }
     }
-    res.status(400)
+    res.status(400).send("Unknown error")
 }
