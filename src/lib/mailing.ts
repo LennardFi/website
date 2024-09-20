@@ -74,7 +74,8 @@ export const sendMail = async (
 <p>${contactDescription}</p>
 `,
                 },
-                (err) => {
+                (err, info) => {
+                    console.log({ info })
                     client.close()
 
                     if (err === null || err === undefined) {
