@@ -40,30 +40,28 @@ export const sendMail = async (
     contactPhone: string,
     contactDescription: string,
 ): Promise<void> => {
-    return new Promise(async (resolve, reject) => {
-        const config = await readMailConfig()
-        const client = createClient(config)
+    const config = await readMailConfig()
+    const client = createClient(config)
 
-        try {
-            client.sendMail(
-                {
-                    to: config.toMailAddress,
-                    from: {
-                        address: config.fromMailAddress,
-                        name: "Website Kontaktformular",
-                    },
-                    subject: config.dev
-                        ? `Test-Mail`
-                        : `Foto-Anfrage per Mail von ${contactName}`,
-                    html: `
+    try {
+        const info = await client.sendMail({
+            to: config.toMailAddress,
+            from: {
+                address: config.fromMailAddress,
+                name: "Website Kontaktformular",
+            },
+            subject: config.dev
+                ? `Test-Mail`
+                : `Foto-Anfrage per Mail von ${contactName}`,
+            html: `
 <style>
 * {
     font-family: Raleway, "Open Sans", "Fira Code", "Fira Code VF", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 </style>
 <h1>Neue ${
-                        config.dev ? "Test-" : ""
-                    }Kontaktaufnahme über das Kontaktformular:<h1>
+                config.dev ? "Test-" : ""
+            }Kontaktaufnahme über das Kontaktformular:<h1>
 <h2>Name</h2>
 <p>${contactName}</p>
 <h2>Mail</h2>
@@ -73,22 +71,11 @@ export const sendMail = async (
 <h2>Beschreibung</h2>
 <p>${contactDescription}</p>
 `,
-                },
-                (err, info) => {
-                    console.log({ info })
-                    client.close()
+        })
 
-                    if (err === null || err === undefined) {
-                        resolve()
-                        return
-                    }
-                    console.error("Error while sending e-mail:", err)
-                    reject(err)
-                },
-            )
-        } catch (err) {
-            console.error("Error while trying to send e-mail:", err)
-            reject(err)
-        }
-    })
+        client.close()
+    } catch (err) {
+        console.error("Error while sending e-mail:", err)
+        throw err
+    }
 }
