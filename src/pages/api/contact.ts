@@ -3,7 +3,6 @@ import { isContactRequestBody } from "../../lib/helpers"
 import { sendMail } from "../../lib/mailing"
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-    // TODO: Not implemented
     if (req.method === "POST") {
         if (typeof req.body === "string") {
             console.log(req.body)
@@ -12,11 +11,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
                 if (isContactRequestBody(v)) {
                     console.log("is contact request")
-                    return sendMail(v.name, v.mail, v.phone, v.description)
+
+                    sendMail(v.name, v.mail, v.phone, v.description)
                         .then(() => res.status(200).send(null))
                         .catch(() =>
                             res.status(400).send("Could not send mail"),
                         )
+
+                    return
                 }
 
                 return res.status(400).send("Invalid request body")
