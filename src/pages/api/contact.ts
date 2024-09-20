@@ -5,12 +5,13 @@ import { sendMail } from "../../lib/mailing"
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // TODO: Not implemented
     if (req.method === "POST") {
-        console.log(req.body)
         if (typeof req.body === "string") {
+            console.log(req.body)
             try {
                 const v = JSON.parse(req.body) as unknown
 
                 if (isContactRequestBody(v)) {
+                    console.log("is contact request")
                     return sendMail(v.name, v.mail, v.phone, v.description)
                         .then(() => res.status(200).send(null))
                         .catch(() =>
