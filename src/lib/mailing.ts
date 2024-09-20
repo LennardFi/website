@@ -42,15 +42,9 @@ export const sendMail = async (
 ): Promise<void> => {
     return new Promise(async (resolve, reject) => {
         const config = await readMailConfig()
-
-        console.debug("Creating client")
         const client = createClient(config)
 
-        console.debug("Client created")
-
         try {
-            console.debug("Sending mail")
-
             client.sendMail(
                 {
                     to: config.toMailAddress,
