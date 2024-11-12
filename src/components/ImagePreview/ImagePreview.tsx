@@ -1,11 +1,11 @@
 import Image, { ImageProps } from "next/image"
 import { useContext } from "react"
 import ImageViewContext from "../../context/ImageViewContext/ImageViewContext"
-import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
 import Website from "../../typings"
 import styles from "./ImagePreview.module.scss"
 
 export interface ImagePreviewProps extends Omit<ImageProps, "alt"> {
+    lang: Website.I18n.Language
     /**
      * Label in German
      */
@@ -29,17 +29,17 @@ const ImagePreview = ({
     className,
     de,
     en,
+    lang,
     imageList,
     src,
     href,
     ...rest
 }: ImagePreviewProps) => {
-    const localizationContext = useContext(LocalizationContext)
     const imageViewContext = useContext(ImageViewContext)
 
     return (
         <Image
-            alt={localizationContext.currentLanguage === "DE" ? de : en}
+            alt={lang === "de" || lang === "de-DE" ? de : en}
             blurDataURL={
                 typeof src === "string"
                     ? undefined
@@ -52,8 +52,10 @@ const ImagePreview = ({
             onClick={() =>
                 imageViewContext.viewImage({
                     label: {
-                        DE: de,
-                        EN: en,
+                        de,
+                        "de-DE": de,
+                        en,
+                        "en-US": en,
                     },
                     src: src,
                     href,

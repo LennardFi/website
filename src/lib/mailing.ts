@@ -1,22 +1,48 @@
-import { readFile } from "fs/promises"
 import nodemailer from "nodemailer"
 import SMTPTransport from "nodemailer/lib/smtp-transport"
 import Website from "../typings"
+import { readRequiredEnvValueSafely } from "./env"
 
 /**
  * The name of the configuration file
  */
 const configFile = "mailing-config.json"
 
-export const readMailConfig =
+export const getMailConfig =
     async (): Promise<Website.Config.MailingConfig> => {
-        const file = await readFile(`./${configFile}`, {
-            encoding: "utf8",
-        })
+        const host = readRequiredEnvValueSafely(
+            "WEBSITE_CONTACT_FORMULAR_EMAIL_HOST",
+            "string",
+        )
+        const port = readRequiredEnvValueSafely(
+            "WEBSITE_CONTACT_FORMULAR_EMAIL_PORT",
+            "number",
+        )
+        const user = readRequiredEnvValueSafely(
+            "WEBSITE_CONTACT_FORMULAR_EMAIL_USER",
+            "string",
+        )
+        const password = readRequiredEnvValueSafely(
+            "WEBSITE_CONTACT_FORMULAR_EMAIL_PASSWORD",
+            "string",
+        )
+        const toMailAddress = readRequiredEnvValueSafely(
+            "WEBSITE_CONTACT_FORMULAR_EMAIL_TOMAIL",
+            "string",
+        )
+        const fromMailAddress = readRequiredEnvValueSafely(
+            "WEBSITE_CONTACT_FORMULAR_EMAIL_FROMMAIL",
+            "string",
+        )
 
-        const config = JSON.parse(file) as Website.Config.MailingConfig
-
-        return config
+        return {
+            host,
+            port,
+            user,
+            password,
+            toMailAddress,
+            fromMailAddress,
+        }
     }
 
 export const createClient = (config: Website.Config.MailingConfig) => {
@@ -40,7 +66,7 @@ export const sendMail = async (
     contactPhone: string,
     contactDescription: string,
 ): Promise<void> => {
-    const config = await readMailConfig()
+    const config = await getMailConfig()
     const client = createClient(config)
 
     try {

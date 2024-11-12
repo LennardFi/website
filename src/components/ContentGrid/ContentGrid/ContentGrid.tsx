@@ -1,3 +1,5 @@
+"use client"
+
 import { Fragment } from "react"
 import useDeviceSize from "../../../hooks/useDeviceSize"
 import { getDimensionValue } from "../../../lib/helpers"
@@ -42,7 +44,7 @@ const ContentGrid = ({
             style={{
                 gap: gap !== undefined ? getDimensionValue(gap) : undefined,
                 gridTemplate: `repeat(${Math.ceil(
-                    childrenAsArray.length / numberOfColumns
+                    childrenAsArray.length / numberOfColumns,
                 )}, auto) / repeat(${numberOfColumns}, 1fr)`,
                 margin: getDimensionValue(5, 0),
                 ...style,

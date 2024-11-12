@@ -1,0 +1,10 @@
+/.git
+/.next
+/.vscode
+/e2e
+/fallback
+/hooks
+/node_modules
+/script
+/test-results
+/*.env*.sample

@@ -1,31 +1,33 @@
+import Website from "@/typings"
 import Link from "next/link"
 import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa"
-import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
 import styles from "./Footer.module.scss"
 
-const Footer = () => {
+interface FooterProps {
+    dictionary: Website.I18n.Dictionary
+    lang: Website.I18n.Language
+}
+
+const Footer = ({ dictionary, lang }: FooterProps) => {
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <ul className={styles.links}>
                     <li>
-                        <Link href="/privacy">
-                            <LocalizedLabel
-                                de="Datenschutzerklärung"
-                                en="Privacy policy"
-                            />
+                        <Link href={`${lang}/privacy`}>
+                            {dictionary.footer.link_privacy}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/imprint">
-                            <LocalizedLabel de="Impressum" en="Imprint" />
+                        <Link href={`/${lang}/imprint`}>
+                            {dictionary.footer.link_imprint}
                         </Link>
                     </li>
                 </ul>
                 <ul className={styles.links}>
                     <li>
-                        <Link href="/links">
-                            <LocalizedLabel de="Links" en="Links" />
+                        <Link href={`/${lang}/links`}>
+                            {dictionary.footer.link_links}
                         </Link>
                     </li>
                 </ul>

@@ -1,11 +1,14 @@
+"use client"
+
+import Website from "@/typings"
 import { StaticImageData } from "next/image"
-import { CSSProperties, useContext } from "react"
-import LocalizationContext from "../../../context/LocalizationContext/LocalizationContext"
+import { CSSProperties } from "react"
 import ImagePreview from "../../ImagePreview/ImagePreview"
 import styles from "./ContentGridCell.module.scss"
 
 interface ContentGridCellPropsBase {
     className?: string
+    lang?: Website.I18n.Language
     style?: CSSProperties
 }
 
@@ -15,6 +18,7 @@ export interface EmptyContentGridCellProps extends ContentGridCellPropsBase {
 
 export interface ImageContentGridCellProps extends ContentGridCellPropsBase {
     image: StaticImageData
+    lang: Website.I18n.Language
     de?: string
     en?: string
     /**
@@ -27,6 +31,7 @@ export interface ImageContentGridCellProps extends ContentGridCellPropsBase {
 export interface TextContentGridCellProps extends ContentGridCellPropsBase {
     de: string
     en: string
+    lang: Website.I18n.Language
     /**
      * Renders the label as an anchor element with a
      * reference to the given URL or path.
@@ -45,8 +50,6 @@ export type ContentGridCellProps =
     | ChildrenContentGridCellProps
 
 const ContentGridCell = (props: ContentGridCellProps) => {
-    const localizationContext = useContext(LocalizationContext)
-
     if ("image" in props) {
         return (
             <ImagePreview
@@ -57,6 +60,7 @@ const ContentGridCell = (props: ContentGridCellProps) => {
                 href={props.href}
                 de={props.de ?? ""}
                 en={props.en ?? ""}
+                lang={props.lang}
             />
         )
     }
@@ -73,13 +77,13 @@ const ContentGridCell = (props: ContentGridCellProps) => {
         <div className={styles.cell}>
             {props.href === undefined ? (
                 <div>
-                    {localizationContext.currentLanguage === "DE"
+                    {props.lang === "de" || props.lang === "de-DE"
                         ? props.de
                         : props.en}
                 </div>
             ) : (
                 <a href={props.href}>
-                    {localizationContext.currentLanguage === "DE"
+                    {props.lang === "de" || props.lang === "de-DE"
                         ? props.de
                         : props.en}
                 </a>

@@ -1,14 +1,12 @@
 import { createContext } from "react"
 import Website from "../../typings"
 
-interface LocalizationContext {
-    currentLanguage: Website.Base.Localization
-    setLanguage(language: Website.Base.Localization): void
+export interface LocalizationContext {
+    lang: Website.I18n.Language
 }
 
 const LocalizationContext = createContext<LocalizationContext>({
-    currentLanguage: "DE",
-    setLanguage() {},
+    lang: "de",
 })
 
 export default LocalizationContext

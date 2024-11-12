@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react"
 import {
     SIZE_BREAKPOINT_LARGE_STRING,

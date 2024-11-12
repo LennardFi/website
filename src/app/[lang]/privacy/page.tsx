@@ -1,18 +1,29 @@
-import LocalizedLabel, {
-    DE,
-    EN,
-} from "../components/LocalizedLabel/LocalizedLabel"
-import Page from "../components/Page/Page"
-import styles from "./privacy.module.scss"
+import Website from "@/typings"
+import Link from "next/link"
+import Page from "../../../components/Page/Page"
+import { getDictionary } from "../dictionaries"
+import styles from "./page.module.scss"
 
-export default function Privacy() {
+export default async function Privacy({
+    params: { lang },
+}: {
+    params: { lang: Website.I18n.Language }
+}) {
+    const dict = await getDictionary(lang)
+
     return (
         <Page
             className={styles.privacy}
-            pageTitle={["Datenschutzerklärung", "Privacy Policy"]}
+            dictionary={dict}
+            lang={lang}
+            pageTitle={
+                lang === "de" || lang === "de-DE"
+                    ? "Datenschutzerklärung"
+                    : "Privacy Policy"
+            }
         >
-            <LocalizedLabel>
-                <DE>
+            {lang === "de" || lang === "de-DE" ? (
+                <>
                     <h2 id="m716">Präambel</h2>
                     <p>
                         Mit der folgenden Datenschutzerklärung möchten wir Sie
@@ -682,9 +693,10 @@ export default function Privacy() {
                             von Dr. Thomas Schwenke
                         </a>
                     </p>
-                </DE>
-                <EN></EN>
-            </LocalizedLabel>
+                </>
+            ) : (
+                <Link href={"/de/privacy"}>Show original version</Link>
+            )}
         </Page>
     )
 }

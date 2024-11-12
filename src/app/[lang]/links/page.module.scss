@@ -1,4 +1,4 @@
-@use "../styles/core.module.scss" as core;
+@use "../../../styles/core.module.scss" as core;
 
 .container {
     padding: 0 !important;
@@ -11,8 +11,7 @@
 
     h1 {
         color: white;
-        text-shadow: core.getDimensionValue(0.5) core.getDimensionValue(0.5)
-            black;
+        text-shadow: core.getDimensionValue(0.5) core.getDimensionValue(0.5) black;
     }
 
     .table {
@@ -57,6 +56,11 @@
             .label {
                 color: inherit;
                 font-size: core.getDimensionValue(2);
+            }
+
+            &.languageSwitch {
+                align-self: center;
+                gap: core.getDimensionValue(2);
             }
         }
     }
