@@ -1,20 +1,32 @@
-import { DE as DeFlag, US as UsFlag } from "country-flag-icons/react/3x2"
+"use client"
+
+import Website from "@/typings"
+import DeFlag from "country-flag-icons/react/3x2/DE"
+import UsFlag from "country-flag-icons/react/3x2/US"
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/router"
-import { useContext, useState } from "react"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
 import { TfiClose, TfiMenu } from "react-icons/tfi"
-import ProfilePicture from "../../../content/about/DSCF7863-Rectangle.jpg"
-import LocalizationContext from "../../context/LocalizationContext/LocalizationContext"
-import LocalizedLabel from "../LocalizedLabel/LocalizedLabel"
+import ProfilePicture from "../../assets/images/about/DSCF7863-Rectangle.jpg"
 import styles from "./Navigation.module.scss"
 
-export interface NavigationProps {}
+export interface NavigationProps {
+    dictionary: Website.I18n.Dictionary
+    lang: Website.I18n.Language
+}
 
-const Navigation = (props: NavigationProps) => {
-    const localizationContext = useContext(LocalizationContext)
-    const router = useRouter()
+export default function Navigation({ dictionary, lang }: NavigationProps) {
+    const pathName = usePathname()
     const [showMenu, setShowMenu] = useState(false)
+
+    const otherLanguage: Website.I18n.Language =
+        lang === "de" || lang === "de-DE" ? "en" : "de"
+    const switchLanguageLink = [
+        "",
+        otherLanguage,
+        ...pathName.split("/").slice(2),
+    ].join("/")
 
     return (
         <nav className={styles.nav}>
@@ -36,50 +48,35 @@ const Navigation = (props: NavigationProps) => {
             </button>
 
             <ul className={`${styles.menu} ${showMenu ? styles.show : ""}`}>
-                <li className={router.asPath === "/" ? styles.currentPage : ""}>
-                    <Link href="/">
-                        <LocalizedLabel de="Portfolio" en="Portfolio" />
+                <li className={pathName === "/" ? styles.currentPage : ""}>
+                    <Link href={`/${lang}/`}>
+                        {dictionary.navigation.portfolio}
                     </Link>
                 </li>
                 <li
                     className={
-                        router.asPath === "/contact" ? styles.currentPage : ""
+                        pathName === "/contact" ? styles.currentPage : ""
                     }
                 >
-                    <Link href="/contact">
-                        <LocalizedLabel de="Kontakt" en="Contact" />
+                    <Link href={`/${lang}/contact`}>
+                        {dictionary.navigation.contact}
                     </Link>
                 </li>
-                <li
-                    className={
-                        router.asPath === "/about" ? styles.currentPage : ""
-                    }
-                >
-                    <Link href="/about">
-                        <LocalizedLabel de="Über mich" en="About me" />
+                <li className={pathName === "/about" ? styles.currentPage : ""}>
+                    <Link href={`/${lang}/about`}>
+                        {dictionary.navigation.about_me}
                     </Link>
                 </li>
                 <li className={styles.languageSwitch}>
-                    <button
-                        type="button"
-                        onClick={() =>
-                            localizationContext.setLanguage(
-                                localizationContext.currentLanguage === "DE"
-                                    ? "EN"
-                                    : "DE"
-                            )
-                        }
-                    >
-                        {localizationContext.currentLanguage === "DE" ? (
-                            <UsFlag title="Englisch" />
+                    <Link href={switchLanguageLink}>
+                        {otherLanguage === "de" ? (
+                            <DeFlag title="Deutsch" />
                         ) : (
-                            <DeFlag title="German" />
+                            <UsFlag title="English" />
                         )}
-                    </button>
+                    </Link>
                 </li>
             </ul>
         </nav>
     )
 }
-
-export default Navigation

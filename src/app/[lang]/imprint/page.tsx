@@ -1,9 +1,22 @@
-import Page from "../components/Page/Page"
-import styles from "./imprint.module.scss"
+import Website from "@/typings"
+import Page from "../../../components/Page/Page"
+import { getDictionary } from "../dictionaries"
+import styles from "./page.module.scss"
 
-export default function Imprint() {
+export default async function Imprint({
+    params: { lang },
+}: {
+    params: { lang: Website.I18n.Language }
+}) {
+    const dict = await getDictionary(lang)
+
     return (
-        <Page className={styles.imprint} pageTitle={["Impressum", "Imprint"]}>
+        <Page
+            className={styles.imprint}
+            dictionary={dict}
+            lang={lang}
+            pageTitle={dict.pages.imprint.pageTitle}
+        >
             <h2>Angaben gemäß § 5 TMG</h2>
             <p>
                 Lennard Fickus <br />
@@ -79,7 +92,7 @@ export default function Imprint() {
                 Impressum vom{" "}
                 <a href="https://www.impressum-generator.de">
                     Impressum Generator
-                </a>
+                </a>{" "}
                 der{" "}
                 <a
                     href="https://www.kanzlei-hasselbach.de/standorte/frankfurt/"

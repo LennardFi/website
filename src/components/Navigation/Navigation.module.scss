@@ -73,7 +73,7 @@
                 align-items: center;
                 flex-direction: row;
 
-                & > button {
+                &>* {
                     height: core.getDimensionValue(3);
                     background: transparent;
                     border: none;
@@ -103,7 +103,7 @@
     &:has(> .menu.show) {
         height: 100vh;
 
-        & + * {
+        &+* {
             display: none;
         }
     }
@@ -112,7 +112,7 @@
         &:has(> .menu.show) {
             height: auto;
 
-            & + * {
+            &+* {
                 display: flex;
             }
         }

@@ -1,8 +1,0 @@
-{
-    "host": "SMTP-Hostserver",
-    "port": 465,
-    "user": "Username / Sender E-Mail-Adress",
-    "password": "Password for User",
-    "toMailAddress": "Receiver E-Mail-Adress",
-    "fromMailAddress": "Sender E-Mail-Adress"
-}
