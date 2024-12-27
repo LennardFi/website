@@ -1,0 +1,27 @@
+name: lef-website-services
+
+services:
+    web:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        container_name: lef-website
+        ports:
+            - "${WEBSITE_EXPOSE_PORT}:3000"
+        environment:
+            WEBSITE_CONTACT_FORMULAR_EMAIL_HOST: "${WEBSITE_CONTACT_FORMULAR_EMAIL_HOST}"
+            WEBSITE_CONTACT_FORMULAR_EMAIL_PORT: "${WEBSITE_CONTACT_FORMULAR_EMAIL_PORT}"
+            WEBSITE_CONTACT_FORMULAR_EMAIL_USER: "${WEBSITE_CONTACT_FORMULAR_EMAIL_USER}"
+            WEBSITE_CONTACT_FORMULAR_EMAIL_PASSWORD: "${WEBSITE_CONTACT_FORMULAR_EMAIL_PASSWORD}"
+            WEBSITE_CONTACT_FORMULAR_EMAIL_TOMAIL: "${WEBSITE_CONTACT_FORMULAR_EMAIL_TOMAIL}"
+            WEBSITE_CONTACT_FORMULAR_EMAIL_FROMMAIL: "${WEBSITE_CONTACT_FORMULAR_EMAIL_FROMMAIL}"
+
+            WEBSITE_EXPOSE_PORT: "${WEBSITE_EXPOSE_PORT}"
+
+        restart: "on-failure"
+        healthcheck:
+            test:
+                ["CMD", "curl", "-f", "http://localhost:${WEBSITE_EXPOSE_PORT}"]
+            interval: 10s
+            timeout: 10s
+            retries: 10
