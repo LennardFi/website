@@ -30,7 +30,7 @@ export default function Navigation({ dictionary, lang }: NavigationProps) {
 
     return (
         <nav className={styles.nav}>
-            <Link href="/">
+            <Link href={`/${lang}/`}>
                 <Image
                     alt="Profile Picture"
                     className={styles.logo}
