@@ -176,7 +176,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 			{
 				//#region Business portraits
 			}
-			<h2>{dict.pages.home.section_wedding}</h2>
+			<h2>{dict.pages.home.section_business}</h2>
 			<ContentGrid
 				columns={[1, 2, 2, 2]}
 				gap={2}
