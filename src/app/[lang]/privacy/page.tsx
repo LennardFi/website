@@ -694,7 +694,13 @@ export default async function Privacy({
 					</p>
 				</>
 			) : (
-				<Link href={"/de/privacy"}>Show original version</Link>
+				<>
+					<p>
+						This privacy policy is currently only available in
+						German.
+					</p>
+					<Link href={"/de/privacy"}>Show German version</Link>
+				</>
 			)}
 		</Page>
 	)
