@@ -18,7 +18,7 @@ services:
 
             WEBSITE_EXPOSE_PORT: "${WEBSITE_EXPOSE_PORT}"
 
-        restart: "on-failure"
+        restart: "unless-stopped"
         healthcheck:
             test:
                 ["CMD", "curl", "-f", "http://localhost:${WEBSITE_EXPOSE_PORT}"]
