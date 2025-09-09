@@ -4,19 +4,18 @@ import Website from "@/typings"
 import { getDictionary } from "../dictionaries"
 
 export default async function ContactPage({
-    params: { lang },
-}: {
-    params: { lang: Website.I18n.Language }
-}) {
-    const dict = await getDictionary(lang)
+	params,
+}: PageProps<"/[lang]/contact">) {
+	const { lang } = (await params) as { lang: Website.I18n.Language }
+	const dict = await getDictionary(lang)
 
-    return (
-        <Page
-            dictionary={dict}
-            lang={lang}
-            pageTitle={dict.pages.contact.pageTitle}
-        >
-            <ContactForm dict={dict} />
-        </Page>
-    )
+	return (
+		<Page
+			dictionary={dict}
+			lang={lang}
+			pageTitle={dict.pages.contact.pageTitle}
+		>
+			<ContactForm dict={dict} />
+		</Page>
+	)
 }
