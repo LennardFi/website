@@ -38,3 +38,6 @@ next-env.d.ts
 # config files
 .env
 mailing-config.json
+
+# testing
+test-results/
