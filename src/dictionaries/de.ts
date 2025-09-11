@@ -6,7 +6,7 @@ const Dictionary: Website.I18n.Dictionary = {
             pageTitle: "Über mich",
             hello: "👋 Hallo",
             about_me_text_1: "Ich bin Lennard Fickus.",
-            about_me_text_2: "25 Jahre alt, Programmierer und Hobbyfotograf.",
+            about_me_text_2: "26 Jahre alt, Programmierer und Hobbyfotograf.",
             about_me_text_3:
                 "Hauptsächlich konzentriere ich mich auf die Portrait- und People-Fotografie. Jeder Mensch ist einzigartig und wunderbar von unserem Gott geschaffen worden und das versuche ich in meinen Bildern festzuhalten. ",
             about_me_text_4:
